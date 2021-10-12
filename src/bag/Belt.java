@@ -1,20 +1,25 @@
 package bag;
 
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.List;
 
 import player.Ability;
 import randomizer.Randomizer;
 
-public class Footwear implements Equipment {
+public class Belt implements Equipment {
 
   private final List<Ability> effectAbility = new ArrayList<>();
+  private final BeltSize size;
   private int effectValue;
 
-  public Footwear() {
-    Randomizer random = new Randomizer(1, 7);
-    this.effectValue = random.getRandomValue();
-    this.effectAbility.add(Ability.CONSTITUTION);
+  public Belt() {
+
+    this.effectValue = new Randomizer(1, 7).getRandomValue();
+    for (int i = 0; i < new Randomizer(1, 2).getRandomValue(); i++) {
+      this.effectAbility.add(Arrays.asList(Ability.values()).get(new Randomizer(0, 3).getRandomValue()));
+    }
+    this.size = Arrays.asList(BeltSize.values()).get(new Randomizer(0, 2).getRandomValue());
   }
 
   @Override
@@ -29,7 +34,7 @@ public class Footwear implements Equipment {
 
   @Override
   public int getBeltSize() {
-    return 1;
+    return this.size.getSizeValue();
   }
 
   @Override
@@ -44,6 +49,6 @@ public class Footwear implements Equipment {
 
   @Override
   public EquipmentType getEquipmentType() {
-    return EquipmentType.FOOTWEAR;
+    return EquipmentType.BELT;
   }
 }

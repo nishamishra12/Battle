@@ -3,10 +3,12 @@ package player;
 import org.junit.Before;
 import org.junit.Test;
 
+import randomizer.Randomizer;
+
 import static org.junit.Assert.*;
 
-public class DiceTest {
-  Dice dice = new Dice();
+public class RandomizerTest {
+  Randomizer dice = new Randomizer();
 
   @Before
   public void setUp() throws Exception {

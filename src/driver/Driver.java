@@ -9,7 +9,7 @@ public class Driver {
   public static void main (String args[]) {
 
     System.out.println("****** Starting Game ******"+'\n'+"****** Creating Battle Arena ******");
-    new BattleArena();
+    new BattleArena("Nisha", "Varun");
 
   }
 }
