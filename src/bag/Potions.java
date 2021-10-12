@@ -9,11 +9,14 @@ import randomizer.Randomizer;
 
 public class Potions implements Equipment {
 
+  private final String name;
   private final List<Ability> effectAbility = new ArrayList<>();
+  private final int effectMoves;
   private int effectValue;
-  private int effectMoves;
 
-  public Potions() {
+  public Potions(String name) {
+
+    this.name = name;
     this.effectValue = new Randomizer(1, 7).getRandomValue();
     this.effectAbility.add(Arrays.asList(Ability.values()).get(new Randomizer(0, 3).getRandomValue()));
     this.effectMoves = 2;
@@ -47,5 +50,10 @@ public class Potions implements Equipment {
   @Override
   public EquipmentType getEquipmentType() {
     return EquipmentType.POTION;
+  }
+
+  @Override
+  public String getName() {
+    return this.name;
   }
 }

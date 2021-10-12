@@ -9,9 +9,12 @@ import randomizer.Randomizer;
 public class HeadGear implements Equipment {
 
   private final List<Ability> effectAbility = new ArrayList<>();
+  private final String name;
   private int effectValue;
 
-  public HeadGear() {
+  public HeadGear(String name) {
+
+    this.name = name;
     this.effectValue = new Randomizer(1, 7).getRandomValue();
     this.effectAbility.add(Ability.CONSTITUTION);
 
@@ -45,6 +48,11 @@ public class HeadGear implements Equipment {
   @Override
   public EquipmentType getEquipmentType() {
     return EquipmentType.HEADGEAR;
+  }
+
+  @Override
+  public String getName() {
+    return this.name;
   }
 
 }

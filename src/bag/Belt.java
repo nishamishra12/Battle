@@ -9,12 +9,14 @@ import randomizer.Randomizer;
 
 public class Belt implements Equipment {
 
+  private final String name;
   private final List<Ability> effectAbility = new ArrayList<>();
   private final BeltSize size;
   private int effectValue;
 
-  public Belt() {
+  public Belt(String name) {
 
+    this.name = name;
     this.effectValue = new Randomizer(1, 7).getRandomValue();
     for (int i = 0; i < new Randomizer(1, 2).getRandomValue(); i++) {
       this.effectAbility.add(Arrays.asList(Ability.values()).get(new Randomizer(0, 3).getRandomValue()));
@@ -50,5 +52,10 @@ public class Belt implements Equipment {
   @Override
   public EquipmentType getEquipmentType() {
     return EquipmentType.BELT;
+  }
+
+  @Override
+  public String getName() {
+    return this.name;
   }
 }

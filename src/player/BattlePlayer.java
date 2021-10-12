@@ -60,12 +60,22 @@ public class BattlePlayer implements Player {
   //calculate health after wearing full gear
   @Override
   public void calculateHealth() {
-    this.health = this.charisma + this.dexterity + this.constitution + this.strength;
     for (Map.Entry<EquipmentType, List<Equipment>> entry : gearBag.entrySet()) {
       for (Equipment value : entry.getValue()) {
-        this.health = this.health + value.getEffectValue();
+        for (int i = 0; i < value.getEffectAbility().size(); i++) {
+          if (value.getEffectAbility().get(i).equals(Ability.CHARISMA)) {
+            this.charisma += value.getEffectValue();
+          } else if (value.getEffectAbility().get(i).equals(Ability.CONSTITUTION)) {
+            this.constitution += value.getEffectValue();
+          } else if (value.getEffectAbility().get(i).equals(Ability.DEXTERITY)) {
+            this.dexterity += value.getEffectValue();
+          } else if (value.getEffectAbility().get(i).equals(Ability.STRENGTH)) {
+            this.strength += value.getEffectValue();
+          }
+        }
       }
     }
+    this.health = this.charisma + this.strength + this.constitution + this.dexterity;
   }
 
   @Override

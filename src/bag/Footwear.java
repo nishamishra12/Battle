@@ -8,10 +8,13 @@ import randomizer.Randomizer;
 
 public class Footwear implements Equipment {
 
+  private final String name;
   private final List<Ability> effectAbility = new ArrayList<>();
   private int effectValue;
 
-  public Footwear() {
+  public Footwear(String name) {
+
+    this.name = name;
     Randomizer random = new Randomizer(1, 7);
     this.effectValue = random.getRandomValue();
     this.effectAbility.add(Ability.CONSTITUTION);
@@ -45,5 +48,10 @@ public class Footwear implements Equipment {
   @Override
   public EquipmentType getEquipmentType() {
     return EquipmentType.FOOTWEAR;
+  }
+
+  @Override
+  public String getName() {
+    return this.name;
   }
 }

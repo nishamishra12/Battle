@@ -17,4 +17,8 @@ public interface Equipment {
   public void setEffectValueNegative();
 
   public EquipmentType getEquipmentType();
+
+  public String getName();
+
+
 }

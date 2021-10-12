@@ -23,8 +23,8 @@ public class BattleArena implements Arena {
 
   List<Equipment> gearBag = new ArrayList<>();
 
-  private Player player1;
-  private Player player2;
+  private final Player player1;
+  private final Player player2;
 
   public BattleArena(String name1, String name2) {
     this.player1 = new BattlePlayer(name1);
@@ -32,6 +32,9 @@ public class BattleArena implements Arena {
     createGearBag();
     player1.calculateHealth();
     player2.calculateHealth();
+  }
+
+  public void requestWeapon(){
     giveWeaponToPlayer(player1);
     giveWeaponToPlayer(player2);
   }
@@ -55,19 +58,19 @@ public class BattleArena implements Arena {
   private void createGearBag() {
     //add 5 headgear
     for (int i = 0; i < 5; i++) {
-      gearBag.add(new HeadGear());
+      gearBag.add(new HeadGear("Headgear "+i));
     }
     //add 5 footwear
     for (int i = 0; i < 5; i++) {
-      gearBag.add(new Footwear());
+      gearBag.add(new Footwear("Footwear "+i));
     }
     //add 15 Belt
     for (int i = 0; i < 15; i++) {
-      gearBag.add(new Belt());
+      gearBag.add(new Belt("Belt "+i));
     }
     //add 15 Potions;
     for (int i = 0; i < 15; i++) {
-      gearBag.add(new Potions());
+      gearBag.add(new Potions("Potion "+i));
     }
     Collections.shuffle(gearBag);
 

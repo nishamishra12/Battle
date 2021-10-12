@@ -9,26 +9,26 @@ import weapon.Weapon;
 
 public interface Player {
 
-  public String getName();
+  String getName();
 
-  public int getStrength();
+  int getStrength();
 
-  public int getConstitution();
+  int getConstitution();
 
-  public int getDexterity();
+  int getDexterity();
 
-  public int getCharisma();
+  int getCharisma();
 
-  public Map<EquipmentType, List<Equipment>> getPlayerBag();
+  Map<EquipmentType, List<Equipment>> getPlayerBag();
 
-  public void addEquipment(Equipment equipment);
+  void addEquipment(Equipment equipment);
 
-  public Weapon getCurrentWeapon();
+  Weapon getCurrentWeapon();
 
-  public void setCurrentWeapon(Weapon currentWeapon);
+  void setCurrentWeapon(Weapon currentWeapon);
 
-  public void calculateHealth();
+  void calculateHealth();
 
-  public int getHealth();
+  int getHealth();
 
 }
