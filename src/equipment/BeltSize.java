@@ -1,4 +1,4 @@
-package bag;
+package equipment;
 
 public enum BeltSize {
 

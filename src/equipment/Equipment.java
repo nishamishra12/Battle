@@ -1,10 +1,10 @@
-package bag;
+package equipment;
 
 import java.util.List;
 
 import player.Ability;
 
-public interface Equipment {
+public interface Equipment extends Comparable<Equipment> {
 
   public int getEffectValue();
 
@@ -12,13 +12,10 @@ public interface Equipment {
 
   public int getBeltSize();
 
-  public int getEffectMoves();
-
   public void setEffectValueNegative();
 
   public EquipmentType getEquipmentType();
 
   public String getName();
-
 
 }

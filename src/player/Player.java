@@ -3,8 +3,8 @@ package player;
 import java.util.List;
 import java.util.Map;
 
-import bag.Equipment;
-import bag.EquipmentType;
+import equipment.Equipment;
+import equipment.EquipmentType;
 import weapon.Weapon;
 
 public interface Player {
@@ -27,8 +27,22 @@ public interface Player {
 
   void setCurrentWeapon(Weapon currentWeapon);
 
-  void calculateHealth();
-
   int getHealth();
+
+  public int getStrikingPower();
+
+  public int getAvoidanceAbility();
+
+  public int getPotentialDamage();
+
+  public int getActualDamage();
+
+  public void calculatePlayerPowers(Player player);
+
+  public void calculateHealth();
+
+  public void updateHealth(int reducedHealth);
+
+  public void removePotions();
 
 }

@@ -3,14 +3,17 @@ package arena;
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
+import java.util.Map;
 
-import bag.Belt;
-import bag.Equipment;
-import bag.Footwear;
-import bag.HeadGear;
-import bag.Potions;
+import equipment.Belt;
+import equipment.Equipment;
+import equipment.EquipmentType;
+import equipment.Footwear;
+import equipment.HeadGear;
+import equipment.Potions;
 import player.BattlePlayer;
 import player.Player;
+import randomizer.RandomGenerator;
 import randomizer.Randomizer;
 import weapon.Axe;
 import weapon.Broadsword;
@@ -21,27 +24,106 @@ import weapon.Weapon;
 
 public class BattleArena implements Arena {
 
-  List<Equipment> gearBag = new ArrayList<>();
-
   private final Player player1;
   private final Player player2;
+//  RandomGenerator randomGenerator =  new Randomizer();
+  List<Equipment> gearBag = new ArrayList<>();
+  private int move;
 
   public BattleArena(String name1, String name2) {
     this.player1 = new BattlePlayer(name1);
     this.player2 = new BattlePlayer(name2);
     createGearBag();
+  }
+
+  //equip players with gears
+  public void equipPlayerWithGear() {
+    assignBagToPlayer();
+  }
+
+  //players to request weapon
+  public void requestWeapon() {
+    giveWeaponToPlayer(player1);
+    giveWeaponToPlayer(player2);
     player1.calculateHealth();
     player2.calculateHealth();
   }
 
-  public void requestWeapon(){
-    giveWeaponToPlayer(player1);
-    giveWeaponToPlayer(player2);
+  //start the battle
+  public void startBattle() {
+    System.out.println("Battle Started");
+    System.out.println("Player 1 health: " + player1.getHealth() + " Charisma" + player1.getCharisma());
+    System.out.println("Player 2 health: " + player2.getHealth() + " Charisma" + player2.getCharisma());
+    if (player1.getCharisma() > player2.getCharisma()) {
+      attack(player1, player2);
+    } else if (player1.getCharisma() < player2.getCharisma()) {
+      attack(player2, player1);
+    } else if (player1.getCharisma() == player2.getCharisma()) {
+      System.out.println("Game Draw, No one Wins ");
+    }
+  }
+
+  private void attack(Player attacker, Player defendant) {
+    if (attacker.getHealth() > 0 && defendant.getHealth() > 0 && move <= 30) {
+      move++;
+      System.out.println("************Move " + move + "Attacker " + attacker.getName() + "Defendant " + defendant.getName());
+      System.out.println("Health attacker: " + attacker.getHealth());
+      System.out.println("Health defendant: " + defendant.getHealth());
+
+      if (move == 5) { //remove potions in round 2
+        attacker.removePotions();
+        defendant.removePotions();
+      }
+      attacker.calculatePlayerPowers(defendant);
+      defendant.calculatePlayerPowers(attacker);
+
+      System.out.println("Striking Power Attacker: " + attacker.getStrikingPower());
+      System.out.println("Actual Damage Attacker: " + attacker.getActualDamage());
+      System.out.println("Avoidance defendant: " + defendant.getAvoidanceAbility());
+      if (attacker.getStrikingPower() > defendant.getAvoidanceAbility()
+              && attacker.getActualDamage() > 0) {
+        defendant.updateHealth(defendant.getHealth() - attacker.getActualDamage());
+      }
+      System.out.println("New Health Attacker: " + attacker.getHealth());
+      System.out.println("New Health defendant: " + defendant.getHealth());
+      attack(defendant, attacker);
+    } else {
+      if (player1.getHealth() <= 0 && player2.getHealth() > 0) {
+        System.out.println(player1.getName() + "Wins");
+      } else if (player1.getHealth() > 0 && player2.getHealth() <= 0) {
+        System.out.println(player2.getName() + "Wins");
+      } else {
+        System.out.println("No one is able to attack, game draw");
+      }
+    }
+  }
+
+  public String getPlayerDescription() {
+    return getDescriptionHelper(player1)+'\n'+getDescriptionHelper(player2);
+  }
+
+  private String getDescriptionHelper(Player player) {
+    List<Equipment> playerGears = new ArrayList<>();
+    for (Map.Entry<EquipmentType, List<Equipment>> entry : player.getPlayerBag().entrySet()) {
+      playerGears.addAll(entry.getValue());
+    }
+    Collections.sort(playerGears);
+    StringBuilder stringBuilder = new StringBuilder();
+    stringBuilder.append("************** Player Description **************" + '\n' + "Player Name: ")
+            .append(player.getName()+'\n').
+            append("Charisma: "+player.getCharisma()+ ", Constitution: "+player.getConstitution()
+                    +", Dexterity: "+player.getDexterity()+", Strength: "+player.getStrength() + '\n')
+            .append("Gears - "+'\n');
+    for (int i=0;i< playerGears.size();i++) {
+      stringBuilder.append(playerGears.get(i).getName()).append('\n');
+    }
+    stringBuilder.append("Weapon: "+ player.getCurrentWeapon().getClass().getSimpleName());
+    return stringBuilder.toString();
   }
 
   private void giveWeaponToPlayer(Player p) {
     List<Weapon> weapons = setWeaponArmory();
-    p.setCurrentWeapon(weapons.get(new Randomizer(0,5).getRandomValue()));
+    p.setCurrentWeapon(weapons.get(new Randomizer(0, 5).getRandomValue()));
   }
 
   private List<Weapon> setWeaponArmory() {
@@ -51,26 +133,30 @@ public class BattleArena implements Arena {
     weaponArmory.add(new Kantana());
     weaponArmory.add(new Broadsword());
     weaponArmory.add(new TwoHandedSword());
-    Collections.shuffle(this.setWeaponArmory());
+    Collections.shuffle(weaponArmory);
     return weaponArmory;
   }
 
   private void createGearBag() {
     //add 5 headgear
     for (int i = 0; i < 5; i++) {
-      gearBag.add(new HeadGear("Headgear "+i));
+      int c=i+65;
+      gearBag.add(new HeadGear("Headgear" + (char)c));
     }
     //add 5 footwear
     for (int i = 0; i < 5; i++) {
-      gearBag.add(new Footwear("Footwear "+i));
+      int c=i+65;
+      gearBag.add(new Footwear("Footwear" + (char)c));
     }
     //add 15 Belt
     for (int i = 0; i < 15; i++) {
-      gearBag.add(new Belt("Belt "+i));
+      int c=i+65;
+      gearBag.add(new Belt("Belt" + (char)c));
     }
     //add 15 Potions;
     for (int i = 0; i < 15; i++) {
-      gearBag.add(new Potions("Potion "+i));
+      int c=i+65;
+      gearBag.add(new Potions("Potion" + (char)c));
     }
     Collections.shuffle(gearBag);
 
@@ -78,7 +164,6 @@ public class BattleArena implements Arena {
       gearBag.get(i).setEffectValueNegative();
     }
     Collections.shuffle(gearBag);
-    assignBagToPlayer();
   }
 
   private void assignBagToPlayer() {

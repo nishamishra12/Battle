@@ -5,15 +5,16 @@ import java.util.Collections;
 import java.util.List;
 import java.util.Random;
 
-public class Randomizer {
+public class Randomizer implements RandomGenerator{
 
   private final Random RANDOM = new Random();
   private int randomValue;
 
-  public Randomizer (int low, int high) {
-      this.randomValue = RANDOM.nextInt(high-low) + low;
+  public Randomizer(int low, int high) {
+     this.randomValue =  low + RANDOM.nextInt(high-low);
   }
-  public Randomizer () {
+
+  public Randomizer() {
   }
 
   private int rollMyDice() {
@@ -35,5 +36,17 @@ public class Randomizer {
 
   public int getRandomValue() {
     return this.randomValue;
+  }
+
+  @Override
+  public int getNextInt() {
+    Random rn = new Random();
+    return rn.nextInt(20);
+  }
+
+  @Override
+  public int getNextInt(int min, int max) {
+    Random rn = new Random();
+    return rn.nextInt(max-min+1)+min;
   }
 }

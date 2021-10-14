@@ -1,4 +1,4 @@
-package bag;
+package equipment;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -6,7 +6,7 @@ import java.util.List;
 import player.Ability;
 import randomizer.Randomizer;
 
-public class HeadGear implements Equipment {
+public class HeadGear extends EquipmentAbstract {
 
   private final List<Ability> effectAbility = new ArrayList<>();
   private final String name;
@@ -15,9 +15,37 @@ public class HeadGear implements Equipment {
   public HeadGear(String name) {
 
     this.name = name;
-    this.effectValue = new Randomizer(1, 7).getRandomValue();
+    this.effectValue = new Randomizer(1, 4).getRandomValue();
     this.effectAbility.add(Ability.CONSTITUTION);
+  }
 
+  @Override
+  public int compareTo(Equipment s) {
+    if (s instanceof EquipmentAbstract) {
+      EquipmentAbstract abstractGear = (EquipmentAbstract) s;
+      return abstractGear.compareToHeadgear(this);
+    }
+    return -1;
+  }
+
+  @Override
+  protected int compareToFootwear(Equipment s) {
+    return 1;
+  }
+
+  @Override
+  protected int compareToHeadgear(Equipment s) {
+    return s.getName().compareTo(this.getName());
+  }
+
+  @Override
+  protected int compareToBelt(Equipment s) {
+    return 1;
+  }
+
+  @Override
+  protected int compareToPotion(Equipment s) {
+    return 1;
   }
 
   @Override
@@ -33,11 +61,6 @@ public class HeadGear implements Equipment {
   @Override
   public int getBeltSize() {
     return 1;
-  }
-
-  @Override
-  public int getEffectMoves() {
-    return -1;
   }
 
   @Override
