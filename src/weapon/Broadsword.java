@@ -1,11 +1,11 @@
 package weapon;
 
-import randomizer.Randomizer;
+import randomizer.RandomGenerator;
 
 public class Broadsword extends Sword {
 
-  public Broadsword() {
-    super(new Randomizer(6,10).getRandomValue());
+  public Broadsword(RandomGenerator randomGenerator) {
+    super(randomGenerator.getNextInt(6,10));
   }
 
 }

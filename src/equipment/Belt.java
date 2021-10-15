@@ -5,7 +5,7 @@ import java.util.Arrays;
 import java.util.List;
 
 import player.Ability;
-import randomizer.Randomizer;
+import randomizer.RandomGenerator;
 
 public class Belt extends EquipmentAbstract {
 
@@ -14,14 +14,14 @@ public class Belt extends EquipmentAbstract {
   private final BeltSize size;
   private int effectValue;
 
-  public Belt(String name) {
+  public Belt(String name, RandomGenerator randomGenerator) {
 
     this.name = name;
-    this.effectValue = new Randomizer(1, 4).getRandomValue();
-    for (int i = 0; i < new Randomizer(1, 2).getRandomValue(); i++) {
-      this.effectAbility.add(Arrays.asList(Ability.values()).get(new Randomizer(0, 4).getRandomValue()));
+    this.effectValue = randomGenerator.getNextInt(1,4);
+    for (int i = 0; i < randomGenerator.getNextInt(1,2); i++) {
+      this.effectAbility.add(Arrays.asList(Ability.values()).get(randomGenerator.getNextInt(0,4)));
     }
-    this.size = Arrays.asList(BeltSize.values()).get(new Randomizer(0, 3).getRandomValue());
+    this.size = Arrays.asList(BeltSize.values()).get(randomGenerator.getNextInt(0,3));
   }
 
   @Override

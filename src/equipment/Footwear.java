@@ -4,7 +4,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 import player.Ability;
-import randomizer.Randomizer;
+import randomizer.RandomGenerator;
 
 public class Footwear extends EquipmentAbstract {
 
@@ -12,11 +12,10 @@ public class Footwear extends EquipmentAbstract {
   private final List<Ability> effectAbility = new ArrayList<>();
   private int effectValue;
 
-  public Footwear(String name) {
+  public Footwear(String name, RandomGenerator randomGenerator) {
 
     this.name = name;
-    Randomizer random = new Randomizer(1, 4);
-    this.effectValue = random.getRandomValue();
+    this.effectValue = randomGenerator.getNextInt(1,4);
     this.effectAbility.add(Ability.DEXTERITY);
   }
 
@@ -61,7 +60,7 @@ public class Footwear extends EquipmentAbstract {
 
   @Override
   public int getBeltSize() {
-    return 1;
+    return -1;
   }
 
   @Override

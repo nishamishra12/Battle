@@ -1,10 +1,10 @@
 package weapon;
 
-import randomizer.Randomizer;
+import randomizer.RandomGenerator;
 
 public class TwoHandedSword extends Sword {
 
-  public TwoHandedSword() {
-    super(new Randomizer(6,10).getRandomValue());
+  public TwoHandedSword(RandomGenerator randomGenerator) {
+    super(randomGenerator.getNextInt(6,10));
   }
 }

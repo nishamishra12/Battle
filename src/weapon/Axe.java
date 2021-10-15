@@ -1,15 +1,13 @@
 package weapon;
 
-import java.util.Random;
-
-import randomizer.Randomizer;
+import randomizer.RandomGenerator;
 
 public class Axe implements Weapon {
 
   private final int damage;
 
-  public Axe() {
-    this.damage = new Randomizer(6,10).getRandomValue();
+  public Axe(RandomGenerator randomGenerator) {
+    this.damage = randomGenerator.getNextInt(6,10);
   }
 
   @Override

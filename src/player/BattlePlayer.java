@@ -7,7 +7,7 @@ import java.util.Map;
 
 import equipment.Equipment;
 import equipment.EquipmentType;
-import randomizer.Randomizer;
+import randomizer.RandomGenerator;
 import weapon.Weapon;
 
 public class BattlePlayer implements Player {
@@ -24,13 +24,15 @@ public class BattlePlayer implements Player {
   private int avoidanceAbility;
   private int damage;
   private int potentialDamage;
+  private RandomGenerator randomGenerator;
 
-  public BattlePlayer(String name) {
+  public BattlePlayer(String name, RandomGenerator randomGenerator) {
     this.name = name;
-    this.strength = new Randomizer().rollMyDiceFourTimes();
-    this.constitution = new Randomizer().rollMyDiceFourTimes();
-    this.dexterity = new Randomizer().rollMyDiceFourTimes();
-    this.charisma = new Randomizer().rollMyDiceFourTimes();
+    this.randomGenerator = randomGenerator;
+    this.strength = randomGenerator.getNextInt(6,18);
+    this.constitution = randomGenerator.getNextInt(6,18);
+    this.dexterity = randomGenerator.getNextInt(6,18);
+    this.charisma = randomGenerator.getNextInt(6,18);
   }
 
   @Override
@@ -87,10 +89,7 @@ public class BattlePlayer implements Player {
     calculateStrikingPower();
     calculateAvoidanceAbility();
     calculatePotentialDamage();
-    System.out.println(player.getName() + " pt damage" + this.potentialDamage);
-    System.out.println("Actual Damage " + this.getActualDamage());
     calculateActualDamage(player);
-    System.out.println("Recalculated Actual Damage " + this.getActualDamage());
   }
 
   @Override
@@ -101,16 +100,14 @@ public class BattlePlayer implements Player {
       for (int i = 0; i < gearBag.get(EquipmentType.POTION).size(); i++) {
         sum = sum + gearBag.get(EquipmentType.POTION).get(i).getEffectValue();
       }
-      System.out.println("Old health before potion "+ this.health);
       this.health = this.health - sum;
-      System.out.println("New health before potion "+ this.health);
       gearBag.remove(EquipmentType.POTION);
       updateAbility();
     }
   }
 
   private void calculateStrikingPower() {
-    this.strikingPower = this.strength + new Randomizer(1, 10).getRandomValue();
+    this.strikingPower = this.strength + randomGenerator.getNextInt(1,10);;
   }
 
   @Override
@@ -124,7 +121,7 @@ public class BattlePlayer implements Player {
   }
 
   private void calculateAvoidanceAbility() {
-    this.avoidanceAbility = this.dexterity + new Randomizer(1, 6).getRandomValue();
+    this.avoidanceAbility = this.dexterity + this.randomGenerator.getNextInt(1,6);
   }
 
   @Override

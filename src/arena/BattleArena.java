@@ -14,7 +14,6 @@ import equipment.Potions;
 import player.BattlePlayer;
 import player.Player;
 import randomizer.RandomGenerator;
-import randomizer.Randomizer;
 import weapon.Axe;
 import weapon.Broadsword;
 import weapon.Flail;
@@ -24,15 +23,19 @@ import weapon.Weapon;
 
 public class BattleArena implements Arena {
 
-  private final Player player1;
-  private final Player player2;
-//  RandomGenerator randomGenerator =  new Randomizer();
+  private Player player1;
+  private Player player2;
+//  private final Player initialPlayer1;
+//  private final Player initialPlayer2;
+  RandomGenerator randomGenerator;
   List<Equipment> gearBag = new ArrayList<>();
   private int move;
 
-  public BattleArena(String name1, String name2) {
-    this.player1 = new BattlePlayer(name1);
-    this.player2 = new BattlePlayer(name2);
+  public BattleArena(String name1, String name2, RandomGenerator randomGenerator) {
+    this.randomGenerator = randomGenerator;
+    this.player1 = new BattlePlayer(name1, this.randomGenerator);
+    this.player2 = new BattlePlayer(name2, this.randomGenerator);
+
     createGearBag();
   }
 
@@ -99,7 +102,7 @@ public class BattleArena implements Arena {
   }
 
   public String getPlayerDescription() {
-    return getDescriptionHelper(player1)+'\n'+getDescriptionHelper(player2);
+    return getDescriptionHelper(player1) + '\n' + getDescriptionHelper(player2);
   }
 
   private String getDescriptionHelper(Player player) {
@@ -110,60 +113,59 @@ public class BattleArena implements Arena {
     Collections.sort(playerGears);
     StringBuilder stringBuilder = new StringBuilder();
     stringBuilder.append("************** Player Description **************" + '\n' + "Player Name: ")
-            .append(player.getName()+'\n').
-            append("Charisma: "+player.getCharisma()+ ", Constitution: "+player.getConstitution()
-                    +", Dexterity: "+player.getDexterity()+", Strength: "+player.getStrength() + '\n')
-            .append("Gears - "+'\n');
-    for (int i=0;i< playerGears.size();i++) {
+            .append(player.getName() + '\n').
+            append("Charisma: " + player.getCharisma() + ", Constitution: " + player.getConstitution()
+                    + ", Dexterity: " + player.getDexterity() + ", Strength: " + player.getStrength() + '\n')
+            .append("Gears - " + '\n');
+    for (int i = 0; i < playerGears.size(); i++) {
       stringBuilder.append(playerGears.get(i).getName()).append('\n');
     }
-    stringBuilder.append("Weapon: "+ player.getCurrentWeapon().getClass().getSimpleName());
+    stringBuilder.append("Weapon: " + player.getCurrentWeapon().getClass().getSimpleName());
     return stringBuilder.toString();
   }
 
   private void giveWeaponToPlayer(Player p) {
     List<Weapon> weapons = setWeaponArmory();
-    p.setCurrentWeapon(weapons.get(new Randomizer(0, 5).getRandomValue()));
+    p.setCurrentWeapon(weapons.get(this.randomGenerator.getNextInt(0, 5)));
   }
 
   private List<Weapon> setWeaponArmory() {
     List<Weapon> weaponArmory = new ArrayList<>();
-    weaponArmory.add(new Axe());
-    weaponArmory.add(new Flail());
-    weaponArmory.add(new Kantana());
-    weaponArmory.add(new Broadsword());
-    weaponArmory.add(new TwoHandedSword());
-    Collections.shuffle(weaponArmory);
+    weaponArmory.add(new Axe(this.randomGenerator));
+    weaponArmory.add(new Flail(this.randomGenerator));
+    weaponArmory.add(new Kantana(this.randomGenerator));
+    weaponArmory.add(new Broadsword(this.randomGenerator));
+    weaponArmory.add(new TwoHandedSword(this.randomGenerator));
     return weaponArmory;
   }
 
   private void createGearBag() {
     //add 5 headgear
     for (int i = 0; i < 5; i++) {
-      int c=i+65;
-      gearBag.add(new HeadGear("Headgear" + (char)c));
+      int c = i + 65;
+      gearBag.add(new HeadGear("Headgear" + (char) c, this.randomGenerator));
     }
     //add 5 footwear
     for (int i = 0; i < 5; i++) {
-      int c=i+65;
-      gearBag.add(new Footwear("Footwear" + (char)c));
+      int c = i + 65;
+      gearBag.add(new Footwear("Footwear" + (char) c, this.randomGenerator));
     }
     //add 15 Belt
     for (int i = 0; i < 15; i++) {
-      int c=i+65;
-      gearBag.add(new Belt("Belt" + (char)c));
+      int c = i + 65;
+      gearBag.add(new Belt("Belt" + (char) c, this.randomGenerator));
     }
     //add 15 Potions;
     for (int i = 0; i < 15; i++) {
-      int c=i+65;
-      gearBag.add(new Potions("Potion" + (char)c));
+      int c = i + 65;
+      gearBag.add(new Potions("Potion" + (char) c,this.randomGenerator));
     }
-    Collections.shuffle(gearBag);
+    gearBag = randomGenerator.shuffleList(gearBag);
 
     for (int i = 0; i < 10; i++) {
       gearBag.get(i).setEffectValueNegative();
     }
-    Collections.shuffle(gearBag);
+    gearBag = randomGenerator.shuffleList(gearBag);
   }
 
   private void assignBagToPlayer() {

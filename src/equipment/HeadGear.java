@@ -4,6 +4,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 import player.Ability;
+import randomizer.RandomGenerator;
 import randomizer.Randomizer;
 
 public class HeadGear extends EquipmentAbstract {
@@ -12,10 +13,10 @@ public class HeadGear extends EquipmentAbstract {
   private final String name;
   private int effectValue;
 
-  public HeadGear(String name) {
+  public HeadGear(String name, RandomGenerator randomGenerator) {
 
     this.name = name;
-    this.effectValue = new Randomizer(1, 4).getRandomValue();
+    this.effectValue = randomGenerator.getNextInt(1,4);
     this.effectAbility.add(Ability.CONSTITUTION);
   }
 
@@ -60,7 +61,7 @@ public class HeadGear extends EquipmentAbstract {
 
   @Override
   public int getBeltSize() {
-    return 1;
+    return -1;
   }
 
   @Override

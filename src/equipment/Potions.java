@@ -5,7 +5,7 @@ import java.util.Arrays;
 import java.util.List;
 
 import player.Ability;
-import randomizer.Randomizer;
+import randomizer.RandomGenerator;
 
 public class Potions extends EquipmentAbstract {
 
@@ -13,10 +13,10 @@ public class Potions extends EquipmentAbstract {
   private final List<Ability> effectAbility = new ArrayList<>();
   private int effectValue;
 
-  public Potions(String name) {
+  public Potions(String name, RandomGenerator randomGenerator) {
     this.name = name;
-    this.effectValue = new Randomizer(1, 4).getRandomValue();
-    this.effectAbility.add(Arrays.asList(Ability.values()).get(new Randomizer(0, 3).getRandomValue()));
+    this.effectValue = randomGenerator.getNextInt(1,4);
+    this.effectAbility.add(Arrays.asList(Ability.values()).get(randomGenerator.getNextInt(0,3)));
   }
 
   @Override
@@ -60,7 +60,7 @@ public class Potions extends EquipmentAbstract {
 
   @Override
   public int getBeltSize() {
-    return 1;
+    return -1;
   }
 
   @Override

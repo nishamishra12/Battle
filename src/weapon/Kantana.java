@@ -1,10 +1,11 @@
 package weapon;
 
+import randomizer.RandomGenerator;
 import randomizer.Randomizer;
 
 public class Kantana extends Sword {
 
-  public Kantana() {
-    super(2*new Randomizer(4,6).getRandomValue());
+  public Kantana(RandomGenerator randomGenerator) {
+    super(2*randomGenerator.getNextInt(6,10));
   }
 }

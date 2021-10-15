@@ -1,13 +1,13 @@
 package weapon;
 
-import randomizer.Randomizer;
+import randomizer.RandomGenerator;
 
 public class Flail implements Weapon {
 
   private final int damage;
 
-  public Flail() {
-    this.damage = new Randomizer(6,10).getRandomValue();
+  public Flail(RandomGenerator randomGenerator) {
+    this.damage = randomGenerator.getNextInt(6,10);
   }
 
   @Override
