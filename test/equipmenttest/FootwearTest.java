@@ -58,4 +58,9 @@ public class FootwearTest {
   public void getName() {
     assertEquals("footwear N", this.footwear.getName());
   }
+
+  @Test
+  public void getMove() {
+    assertEquals(2,this.footwear.getMove());
+  }
 }

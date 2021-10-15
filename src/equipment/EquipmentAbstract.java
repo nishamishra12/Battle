@@ -14,5 +14,4 @@ abstract class EquipmentAbstract implements Equipment {
   protected int compareToFootwear(Equipment s) {
     return -1;
   }
-
 }

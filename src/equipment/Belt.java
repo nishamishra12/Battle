@@ -13,6 +13,7 @@ public class Belt extends EquipmentAbstract {
   private final List<Ability> effectAbility = new ArrayList<>();
   private final BeltSize size;
   private int effectValue;
+  private int move;
 
   public Belt(String name, RandomGenerator randomGenerator) {
 
@@ -22,6 +23,7 @@ public class Belt extends EquipmentAbstract {
       this.effectAbility.add(Arrays.asList(Ability.values()).get(randomGenerator.getNextInt(0,4)));
     }
     this.size = Arrays.asList(BeltSize.values()).get(randomGenerator.getNextInt(0,3));
+    this.move = randomGenerator.getNextInt(5,10);
   }
 
   @Override
@@ -81,5 +83,10 @@ public class Belt extends EquipmentAbstract {
   @Override
   public String getName() {
     return this.name;
+  }
+
+  @Override
+  public int getMove() {
+    return this.move;
   }
 }

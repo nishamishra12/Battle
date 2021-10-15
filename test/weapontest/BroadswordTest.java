@@ -5,7 +5,6 @@ import org.junit.Test;
 
 import randomizer.FixedRandGenerator;
 import weapon.Broadsword;
-import weapon.Kantana;
 import weapon.Weapon;
 
 import static org.junit.Assert.*;

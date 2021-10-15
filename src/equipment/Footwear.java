@@ -11,12 +11,14 @@ public class Footwear extends EquipmentAbstract {
   private final String name;
   private final List<Ability> effectAbility = new ArrayList<>();
   private int effectValue;
+  private int move;
 
   public Footwear(String name, RandomGenerator randomGenerator) {
 
     this.name = name;
     this.effectValue = randomGenerator.getNextInt(1,4);
     this.effectAbility.add(Ability.DEXTERITY);
+    this.move = randomGenerator.getNextInt(5,10);
   }
 
   @Override
@@ -76,5 +78,10 @@ public class Footwear extends EquipmentAbstract {
   @Override
   public String getName() {
     return this.name;
+  }
+
+  @Override
+  public int getMove() {
+    return this.move;
   }
 }

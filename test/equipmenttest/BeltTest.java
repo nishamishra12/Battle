@@ -58,4 +58,9 @@ public class BeltTest {
   public void getName() {
     assertEquals("belt N", this.belt.getName());
   }
+
+  @Test
+  public void getMove() {
+    assertEquals(2,this.belt.getMove());
+  }
 }

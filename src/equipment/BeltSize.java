@@ -14,10 +14,6 @@ public enum BeltSize {
     this.sizeValue = sizeValue;
   }
 
-  public String getSizeName() {
-    return sizeName;
-  }
-
   public int getSizeValue() {
     return sizeValue;
   }

@@ -7,16 +7,18 @@ import java.util.List;
 import player.Ability;
 import randomizer.RandomGenerator;
 
-public class Potions extends EquipmentAbstract {
+public class Potion extends EquipmentAbstract {
 
   private final String name;
   private final List<Ability> effectAbility = new ArrayList<>();
   private int effectValue;
+  private int move;
 
-  public Potions(String name, RandomGenerator randomGenerator) {
+  public Potion(String name, RandomGenerator randomGenerator) {
     this.name = name;
     this.effectValue = randomGenerator.getNextInt(1,4);
     this.effectAbility.add(Arrays.asList(Ability.values()).get(randomGenerator.getNextInt(0,3)));
+    this.move = randomGenerator.getNextInt(5,10);
   }
 
   @Override
@@ -76,5 +78,10 @@ public class Potions extends EquipmentAbstract {
   @Override
   public String getName() {
     return this.name;
+  }
+
+  @Override
+  public int getMove() {
+    return this.move;
   }
 }

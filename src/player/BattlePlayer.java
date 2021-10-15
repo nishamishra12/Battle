@@ -13,26 +13,39 @@ import weapon.Weapon;
 public class BattlePlayer implements Player {
 
   private final String name;
+  private final Map<EquipmentType, List<Equipment>> gearBag;
+  private final RandomGenerator randomGenerator;
   private int strength;
   private int constitution;
   private int dexterity;
   private int charisma;
-  private Map<EquipmentType, List<Equipment>> gearBag  = new HashMap<>();
   private Weapon currentWeapon;
   private int health;
   private int strikingPower;
   private int avoidanceAbility;
   private int damage;
   private int potentialDamage;
-  private RandomGenerator randomGenerator;
 
   public BattlePlayer(String name, RandomGenerator randomGenerator) {
     this.name = name;
     this.randomGenerator = randomGenerator;
-    this.strength = randomGenerator.getNextInt(6,18);
-    this.constitution = randomGenerator.getNextInt(6,18);
-    this.dexterity = randomGenerator.getNextInt(6,18);
-    this.charisma = randomGenerator.getNextInt(6,18);
+    this.strength = randomGenerator.getNextInt(6, 18);
+    this.constitution = randomGenerator.getNextInt(6, 18);
+    this.dexterity = randomGenerator.getNextInt(6, 18);
+    this.charisma = randomGenerator.getNextInt(6, 18);
+    this.gearBag = new HashMap<>();
+  }
+
+  public BattlePlayer(Player player, RandomGenerator randomGenerator) {
+    this.name = player.getName();
+    this.randomGenerator = randomGenerator;
+    this.strength = player.getStrength();
+    this.constitution = player.getConstitution();
+    this.dexterity = player.getDexterity();
+    this.charisma = player.getCharisma();
+    this.gearBag = player.getPlayerBag();
+    this.currentWeapon = player.getCurrentWeapon();
+    this.health = player.getHealth();
   }
 
   @Override
@@ -61,23 +74,25 @@ public class BattlePlayer implements Player {
   }
 
   //calculate health after wearing full gear
-  public void calculateHealth() {
-    updateAbility();
+  public void calculateInitialHealth() {
+    calculateHealthWithGears();
     this.health = this.charisma + this.strength + this.constitution + this.dexterity;
   }
 
-  private void updateAbility() {
-    for (Map.Entry<EquipmentType, List<Equipment>> entry : this.gearBag.entrySet()) {
-      for (Equipment value : entry.getValue()) {
-        for (int i = 0; i < value.getEffectAbility().size(); i++) {
-          if (value.getEffectAbility().get(i).equals(Ability.CHARISMA)) {
-            this.charisma += value.getEffectValue();
-          } else if (value.getEffectAbility().get(i).equals(Ability.CONSTITUTION)) {
-            this.constitution += value.getEffectValue();
-          } else if (value.getEffectAbility().get(i).equals(Ability.DEXTERITY)) {
-            this.dexterity += value.getEffectValue();
-          } else if (value.getEffectAbility().get(i).equals(Ability.STRENGTH)) {
-            this.strength += value.getEffectValue();
+  private void calculateHealthWithGears() {
+    if (!this.gearBag.isEmpty()) {
+      for (Map.Entry<EquipmentType, List<Equipment>> entry : this.gearBag.entrySet()) {
+        for (Equipment value : entry.getValue()) {
+          for (int i = 0; i < value.getEffectAbility().size(); i++) {
+            if (value.getEffectAbility().get(i).equals(Ability.CHARISMA)) {
+              this.charisma += value.getEffectValue();
+            } else if (value.getEffectAbility().get(i).equals(Ability.CONSTITUTION)) {
+              this.constitution += value.getEffectValue();
+            } else if (value.getEffectAbility().get(i).equals(Ability.DEXTERITY)) {
+              this.dexterity += value.getEffectValue();
+            } else if (value.getEffectAbility().get(i).equals(Ability.STRENGTH)) {
+              this.strength += value.getEffectValue();
+            }
           }
         }
       }
@@ -93,21 +108,38 @@ public class BattlePlayer implements Player {
   }
 
   @Override
-  public void removePotions() {
-    System.out.println(this.gearBag);
-    int sum = 0;
-    if (gearBag.containsKey(EquipmentType.POTION)) {
-      for (int i = 0; i < gearBag.get(EquipmentType.POTION).size(); i++) {
-        sum = sum + gearBag.get(EquipmentType.POTION).get(i).getEffectValue();
+  public void removeGears(int move) {
+    if (!gearBag.isEmpty()) {
+      for (Map.Entry<EquipmentType, List<Equipment>> entry : gearBag.entrySet()) {
+        List<Equipment> listOfEquipments = entry.getValue();
+        for (int i = 0; i < listOfEquipments.size(); i++) {
+          if (listOfEquipments.get(i).getMove() == move) {
+            updateAbilities(listOfEquipments.get(i));
+            entry.getValue().remove(listOfEquipments.get(i));
+          }
+        }
       }
-      this.health = this.health - sum;
-      gearBag.remove(EquipmentType.POTION);
-      updateAbility();
+    }
+  }
+
+  private void updateAbilities(Equipment equipment) {
+
+    for (int i = 0; i < equipment.getEffectAbility().size(); i++) {
+      this.health -= equipment.getEffectValue();
+      if (equipment.getEffectAbility().get(i).equals(Ability.CHARISMA)) {
+        this.charisma -= equipment.getEffectValue();
+      } else if (equipment.getEffectAbility().get(i).equals(Ability.CONSTITUTION)) {
+        this.constitution -= equipment.getEffectValue();
+      } else if (equipment.getEffectAbility().get(i).equals(Ability.DEXTERITY)) {
+        this.dexterity -= equipment.getEffectValue();
+      } else if (equipment.getEffectAbility().get(i).equals(Ability.STRENGTH)) {
+        this.strength -= equipment.getEffectValue();
+      }
     }
   }
 
   private void calculateStrikingPower() {
-    this.strikingPower = this.strength + randomGenerator.getNextInt(1,10);;
+    this.strikingPower = this.strength + randomGenerator.getNextInt(1, 10);
   }
 
   @Override
@@ -121,7 +153,7 @@ public class BattlePlayer implements Player {
   }
 
   private void calculateAvoidanceAbility() {
-    this.avoidanceAbility = this.dexterity + this.randomGenerator.getNextInt(1,6);
+    this.avoidanceAbility = this.dexterity + this.randomGenerator.getNextInt(1, 6);
   }
 
   @Override

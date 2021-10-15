@@ -18,4 +18,6 @@ public interface Equipment extends Comparable<Equipment> {
 
   public String getName();
 
+  public int getMove();
+
 }

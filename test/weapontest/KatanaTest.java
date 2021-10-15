@@ -4,19 +4,18 @@ import org.junit.Before;
 import org.junit.Test;
 
 import randomizer.FixedRandGenerator;
-import weapon.Kantana;
-import weapon.TwoHandedSword;
+import weapon.Katana;
 import weapon.Weapon;
 
-import static org.junit.Assert.*;
+import static org.junit.Assert.assertEquals;
 
-public class KantanaTest {
+public class KatanaTest {
 
   Weapon katana;
 
   @Before
   public void setUp() throws Exception {
-    this.katana = new Kantana(new FixedRandGenerator(3));
+    this.katana = new Katana(new FixedRandGenerator(3));
   }
 
   @Test

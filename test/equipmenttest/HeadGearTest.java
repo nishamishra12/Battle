@@ -58,4 +58,9 @@ public class HeadGearTest {
   public void getName() {
     assertEquals("Headgear N", this.headGear.getName());
   }
+
+  @Test
+  public void getMove() {
+    assertEquals(2,this.headGear.getMove());
+  }
 }

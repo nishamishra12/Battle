@@ -10,99 +10,121 @@ import equipment.Equipment;
 import equipment.EquipmentType;
 import equipment.Footwear;
 import equipment.HeadGear;
-import equipment.Potions;
+import equipment.Potion;
 import player.BattlePlayer;
 import player.Player;
 import randomizer.RandomGenerator;
 import weapon.Axe;
 import weapon.Broadsword;
 import weapon.Flail;
-import weapon.Kantana;
+import weapon.Katana;
 import weapon.TwoHandedSword;
 import weapon.Weapon;
 
 public class BattleArena implements Arena {
 
+  private final Player initialPlayer1;
+  private final Player initialPlayer2;
+  List<Weapon> weaponArmory;
+  private RandomGenerator randomGenerator;
+  private List<Equipment> gearBag = new ArrayList<>();
   private Player player1;
   private Player player2;
-//  private final Player initialPlayer1;
-//  private final Player initialPlayer2;
-  RandomGenerator randomGenerator;
-  List<Equipment> gearBag = new ArrayList<>();
   private int move;
 
-  public BattleArena(String name1, String name2, RandomGenerator randomGenerator) {
+  public BattleArena(String name1, String name2, RandomGenerator randomGenerator) throws IllegalArgumentException {
+    if (name1 == null || name2 == null) {
+      throw new IllegalArgumentException("Name of player cannot be null");
+    }
+    if(randomGenerator ==null) {
+      throw new IllegalArgumentException("Randomizer cannot be null");
+    }
     this.randomGenerator = randomGenerator;
-    this.player1 = new BattlePlayer(name1, this.randomGenerator);
-    this.player2 = new BattlePlayer(name2, this.randomGenerator);
-
+    this.initialPlayer1 = new BattlePlayer(name1, this.randomGenerator);
+    this.initialPlayer2 = new BattlePlayer(name2, this.randomGenerator);
     createGearBag();
-  }
-
-  //equip players with gears
-  public void equipPlayerWithGear() {
     assignBagToPlayer();
+    giveWeaponToPlayer(initialPlayer1);
+    giveWeaponToPlayer(initialPlayer2);
+    initialPlayer1.calculateInitialHealth();
+    initialPlayer2.calculateInitialHealth();
   }
 
-  //players to request weapon
-  public void requestWeapon() {
-    giveWeaponToPlayer(player1);
-    giveWeaponToPlayer(player2);
-    player1.calculateHealth();
-    player2.calculateHealth();
-  }
+//
+//  //equip players with gears
+//  public void equipPlayerWithGear() {
+//    assignBagToPlayer();
+//  }
+//
+//  //players to request weapon
+//  public void requestWeapon() {
+//
+//  }
 
   //start the battle
-  public void startBattle() {
-    System.out.println("Battle Started");
-    System.out.println("Player 1 health: " + player1.getHealth() + " Charisma" + player1.getCharisma());
-    System.out.println("Player 2 health: " + player2.getHealth() + " Charisma" + player2.getCharisma());
+  @Override
+  public String startBattle() {
+    this.player1 = new BattlePlayer(initialPlayer1, randomGenerator);
+    this.player2 = new BattlePlayer(initialPlayer2, randomGenerator);
+    move = 0;
+    StringBuilder stringBuilder = new StringBuilder();
+    stringBuilder.append("Players are ready for Battle" + '\n');
+
     if (player1.getCharisma() > player2.getCharisma()) {
-      attack(player1, player2);
+      stringBuilder = attack(player1, player2, stringBuilder);
     } else if (player1.getCharisma() < player2.getCharisma()) {
-      attack(player2, player1);
+      stringBuilder = attack(player2, player1, stringBuilder);
     } else if (player1.getCharisma() == player2.getCharisma()) {
-      System.out.println("Game Draw, No one Wins ");
+      stringBuilder.append("Charisma same! Game Draw, No one Wins");
     }
+    return stringBuilder.toString();
   }
 
-  private void attack(Player attacker, Player defendant) {
+  private StringBuilder attack(Player attacker, Player defendant, StringBuilder stringBuilder) {
     if (attacker.getHealth() > 0 && defendant.getHealth() > 0 && move <= 30) {
       move++;
-      System.out.println("************Move " + move + "Attacker " + attacker.getName() + "Defendant " + defendant.getName());
-      System.out.println("Health attacker: " + attacker.getHealth());
-      System.out.println("Health defendant: " + defendant.getHealth());
+      stringBuilder.append('\n' + "-------------------------- Move No " + move
+              + " --------------------------").append("\n" + attacker.getName() + " is attacking "
+              + defendant.getName());
 
-      if (move == 5) { //remove potions in round 2
-        attacker.removePotions();
-        defendant.removePotions();
-      }
+      attacker.removeGears(this.move);
+      defendant.removeGears(this.move);
       attacker.calculatePlayerPowers(defendant);
       defendant.calculatePlayerPowers(attacker);
 
-      System.out.println("Striking Power Attacker: " + attacker.getStrikingPower());
-      System.out.println("Actual Damage Attacker: " + attacker.getActualDamage());
-      System.out.println("Avoidance defendant: " + defendant.getAvoidanceAbility());
       if (attacker.getStrikingPower() > defendant.getAvoidanceAbility()
               && attacker.getActualDamage() > 0) {
+        stringBuilder.append('\n' + "Attack successful,").append(" Damage done: "
+                + attacker.getActualDamage());
         defendant.updateHealth(defendant.getHealth() - attacker.getActualDamage());
       }
-      System.out.println("New Health Attacker: " + attacker.getHealth());
-      System.out.println("New Health defendant: " + defendant.getHealth());
-      attack(defendant, attacker);
+      if (attacker.getStrikingPower() > defendant.getAvoidanceAbility()
+              && attacker.getActualDamage() <= 0) {
+        stringBuilder.append('\n' + "Attack successful,").append(" but Damage done 0 ");
+        defendant.updateHealth(defendant.getHealth() - attacker.getActualDamage());
+      } else if (attacker.getStrikingPower() <= defendant.getAvoidanceAbility()) {
+        stringBuilder.append('\n' + "Attack was unsuccessful");
+      }
+      attack(defendant, attacker, stringBuilder);
     } else {
       if (player1.getHealth() <= 0 && player2.getHealth() > 0) {
-        System.out.println(player1.getName() + "Wins");
+        stringBuilder.append('\n' + "-------------------------- Game Over --------------------------"
+                + player1.getName() + " Wins!!");
       } else if (player1.getHealth() > 0 && player2.getHealth() <= 0) {
-        System.out.println(player2.getName() + "Wins");
+        stringBuilder.append('\n' + "-------------------------- Game Over --------------------------"
+                + player2.getName() + " Wins!!");
       } else {
-        System.out.println("No one is able to attack, game draw");
+        stringBuilder.append('\n' + "\"-------------------------- Game Over --------------------" +
+                "------" + "No one is able to attack, game draw");
       }
     }
+    return stringBuilder;
   }
 
+  @Override
   public String getPlayerDescription() {
-    return getDescriptionHelper(player1) + '\n' + getDescriptionHelper(player2);
+    return getDescriptionHelper(this.initialPlayer1) + '\n'
+            + getDescriptionHelper(this.initialPlayer2);
   }
 
   private String getDescriptionHelper(Player player) {
@@ -114,8 +136,10 @@ public class BattleArena implements Arena {
     StringBuilder stringBuilder = new StringBuilder();
     stringBuilder.append("************** Player Description **************" + '\n' + "Player Name: ")
             .append(player.getName() + '\n').
-            append("Charisma: " + player.getCharisma() + ", Constitution: " + player.getConstitution()
-                    + ", Dexterity: " + player.getDexterity() + ", Strength: " + player.getStrength() + '\n')
+            append("Charisma: " + player.getCharisma() + "," +
+                    " Constitution: " + player.getConstitution()
+                    + ", Dexterity: " + player.getDexterity() + "," +
+                    " Strength: " + player.getStrength() + '\n')
             .append("Gears - " + '\n');
     for (int i = 0; i < playerGears.size(); i++) {
       stringBuilder.append(playerGears.get(i).getName()).append('\n');
@@ -130,10 +154,10 @@ public class BattleArena implements Arena {
   }
 
   private List<Weapon> setWeaponArmory() {
-    List<Weapon> weaponArmory = new ArrayList<>();
+    weaponArmory = new ArrayList<>();
     weaponArmory.add(new Axe(this.randomGenerator));
     weaponArmory.add(new Flail(this.randomGenerator));
-    weaponArmory.add(new Kantana(this.randomGenerator));
+    weaponArmory.add(new Katana(this.randomGenerator));
     weaponArmory.add(new Broadsword(this.randomGenerator));
     weaponArmory.add(new TwoHandedSword(this.randomGenerator));
     return weaponArmory;
@@ -155,10 +179,10 @@ public class BattleArena implements Arena {
       int c = i + 65;
       gearBag.add(new Belt("Belt" + (char) c, this.randomGenerator));
     }
-    //add 15 Potions;
+    //add 15 Potion;
     for (int i = 0; i < 15; i++) {
       int c = i + 65;
-      gearBag.add(new Potions("Potion" + (char) c,this.randomGenerator));
+      gearBag.add(new Potion("Potion" + (char) c, this.randomGenerator));
     }
     gearBag = randomGenerator.shuffleList(gearBag);
 
@@ -172,10 +196,20 @@ public class BattleArena implements Arena {
     //assign equipments to player 1, and player 2
     for (int i = 0; i < gearBag.size(); i++) {
       if (i < 20) {
-        player1.addEquipment(gearBag.get(i));
+        initialPlayer1.addEquipment(gearBag.get(i));
       } else {
-        player2.addEquipment(gearBag.get(i));
+        initialPlayer2.addEquipment(gearBag.get(i));
       }
     }
+  }
+
+  public List<Equipment> getGearBag() {
+    List<Equipment> equipmentList = new ArrayList<>(this.gearBag);
+    return equipmentList;
+  }
+
+  public List<Weapon> getWeaponArmory() {
+    List<Weapon> weaponList = new ArrayList<>(this.weaponArmory);
+    return weaponList;
   }
 }
