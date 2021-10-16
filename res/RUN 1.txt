@@ -1,0 +1,77 @@
+****** Welcome to Jumptastic Games!!! ******
+Player 1 created
+Player 2 created
+************** Player Description **************
+Player Name: Nick
+Charisma: 20, Constitution: 11, Dexterity: 23, Strength: 16
+Gears - 
+HeadgearC
+PotionA
+PotionB
+PotionG
+PotionH
+PotionI
+PotionJ
+PotionL
+PotionM
+PotionO
+BeltG
+BeltH
+BeltO
+FootwearD
+Weapon: Axe
+************** Player Description **************
+Player Name: Rick
+Charisma: 12, Constitution: 8, Dexterity: 10, Strength: 6
+Gears - 
+HeadgearE
+PotionC
+PotionD
+PotionE
+PotionF
+PotionK
+PotionN
+BeltE
+BeltF
+BeltI
+BeltJ
+BeltM
+FootwearA
+Weapon: Flail
+Players are ready for Battle
+
+-------------------------- Move No 1 --------------------------
+Nick is attacking Rick
+
+Striking Power of Attacker 23
+Defender Avoidance Ability 12
+Attack successful, Damage done: 17
+-------------------------- Move No 2 --------------------------
+Rick is attacking Nick
+
+Striking Power of Attacker 13
+Defender Avoidance Ability 24
+Attack was unsuccessful
+-------------------------- Move No 3 --------------------------
+Nick is attacking Rick
+
+Striking Power of Attacker 25
+Defender Avoidance Ability 13
+Attack successful, Damage done: 17
+-------------------------- Move No 4 --------------------------
+Rick is attacking Nick
+
+Striking Power of Attacker 14
+Defender Avoidance Ability 24
+Attack was unsuccessful
+-------------------------- Move No 5 --------------------------
+Nick is attacking Rick
+
+Removed gear: POTION for Player: Nick, Effecting Ability: Constitution, Value: 2
+Removed gear: POTION for Player: Nick, Effecting Ability: Charisma, Value: 2
+Striking Power of Attacker 18
+Defender Avoidance Ability 14
+Attack successful, Damage done: 17
+-------------------------- Game Over --------------------------
+Rick Wins!!
+Do you want to reset game?

@@ -13,20 +13,25 @@ import equipment.HeadGear;
 import randomizer.RandomGenerator;
 import randomizer.Randomizer;
 
-import static org.junit.Assert.*;
+import static org.junit.Assert.assertNotEquals;
+import static org.junit.Assert.assertTrue;
 
+/**
+ * Test class to check all the implementation of the random class used to
+ * generate random number values.
+ */
 public class RandomizerTest {
 
-  RandomGenerator randomGenerator;
+  private RandomGenerator randomGenerator;
 
   @Before
   public void setUp() throws Exception {
-    randomGenerator =  new Randomizer();
+    randomGenerator = new Randomizer();
   }
 
   @Test
   public void getNextInt() {
-    assertTrue(2<=randomGenerator.getNextInt(2,4) && randomGenerator.getNextInt(2,4)<4);
+    assertTrue(2 <= randomGenerator.getNextInt(2, 4) && randomGenerator.getNextInt(2, 4) <= 4);
   }
 
   @Test
@@ -40,6 +45,6 @@ public class RandomizerTest {
     equipmentList.add(new Footwear("FootwearB", randomGenerator));
     equipmentList.add(new Belt("BeltB", randomGenerator));
     equipmentList.add(new HeadGear("PotionB", randomGenerator));
-    assertNotEquals(equipmentList,randomGenerator.shuffleList(equipmentList));
+    assertNotEquals(equipmentList, randomGenerator.shuffleList(equipmentList));
   }
 }

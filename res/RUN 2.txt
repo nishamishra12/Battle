@@ -1,0 +1,428 @@
+****** Welcome to Jumptastic Games!!! ******
+Player 1 created
+Player 2 created
+************** Player Description **************
+Player Name: Nick
+Charisma: 9, Constitution: 10, Dexterity: 29, Strength: 12
+Gears - 
+HeadgearB
+PotionC
+PotionF
+PotionG
+PotionH
+PotionJ
+PotionM
+PotionN
+BeltB
+BeltE
+BeltF
+BeltM
+BeltO
+FootwearB
+Weapon: Flail
+************** Player Description **************
+Player Name: Rick
+Charisma: 15, Constitution: 22, Dexterity: 17, Strength: 26
+Gears - 
+HeadgearA
+PotionA
+PotionB
+PotionD
+PotionE
+PotionI
+PotionK
+PotionL
+PotionO
+BeltA
+BeltI
+BeltJ
+BeltK
+BeltN
+FootwearD
+Weapon: Axe
+Players are ready for Battle
+
+-------------------------- Move No 1 --------------------------
+Rick is attacking Nick
+
+Striking Power of Attacker 27
+Defender Avoidance Ability 31
+Attack was unsuccessful
+-------------------------- Move No 2 --------------------------
+Nick is attacking Rick
+
+Striking Power of Attacker 18
+Defender Avoidance Ability 18
+Attack was unsuccessful
+-------------------------- Move No 3 --------------------------
+Rick is attacking Nick
+
+Striking Power of Attacker 30
+Defender Avoidance Ability 30
+Attack was unsuccessful
+-------------------------- Move No 4 --------------------------
+Nick is attacking Rick
+
+Striking Power of Attacker 16
+Defender Avoidance Ability 21
+Attack was unsuccessful
+-------------------------- Move No 5 --------------------------
+Rick is attacking Nick
+
+Removed gear: POTION for Player: Rick, Effecting Ability: Dexterity, Value: 3
+Removed gear: BELT for Player: Rick, Effecting Ability: Strength, Value: 2
+Removed gear: BELT for Player: Rick, Effecting Ability: Strength, Value: 2
+Removed gear: BELT for Player: Rick, Effecting Ability: Constitution, Value: 3
+Removed gear: BELT for Player: Rick, Effecting Ability: Strength, Value: 3
+Removed gear: POTION for Player: Nick, Effecting Ability: Constitution, Value: 3
+Removed gear: POTION for Player: Nick, Effecting Ability: Dexterity, Value: 2
+Removed gear: BELT for Player: Nick, Effecting Ability: Dexterity, Value: -3
+Striking Power of Attacker 28
+Defender Avoidance Ability 34
+Attack was unsuccessful
+-------------------------- Move No 6 --------------------------
+Nick is attacking Rick
+
+Removed gear: FOOTWEAR for Player: Nick, Effecting Ability: Dexterity, Value: 3
+Removed gear: POTION for Player: Nick, Effecting Ability: Constitution, Value: 3
+Removed gear: POTION for Player: Nick, Effecting Ability: Dexterity, Value: 3
+Removed gear: BELT for Player: Nick, Effecting Ability: Strength, Value: -1
+Removed gear: HEADGEAR for Player: Nick, Effecting Ability: Constitution, Value: -2
+Removed gear: POTION for Player: Rick, Effecting Ability: Constitution, Value: 1
+Removed gear: POTION for Player: Rick, Effecting Ability: Constitution, Value: 3
+Removed gear: BELT for Player: Rick, Effecting Ability: Dexterity, Value: 1
+Removed gear: BELT for Player: Rick, Effecting Ability: Constitution, Value: 1
+Striking Power of Attacker 16
+Defender Avoidance Ability 14
+Attack successful, Damage done: 7
+-------------------------- Move No 7 --------------------------
+Rick is attacking Nick
+
+Removed gear: POTION for Player: Rick, Effecting Ability: Constitution, Value: -1
+Removed gear: POTION for Player: Rick, Effecting Ability: Charisma, Value: -1
+Removed gear: BELT for Player: Rick, Effecting Ability: Dexterity, Value: 3
+Removed gear: BELT for Player: Nick, Effecting Ability: Charisma, Value: 1
+Striking Power of Attacker 26
+Defender Avoidance Ability 27
+Attack was unsuccessful
+-------------------------- Move No 8 --------------------------
+Nick is attacking Rick
+
+Removed gear: POTION for Player: Nick, Effecting Ability: Charisma, Value: 3
+Removed gear: POTION for Player: Nick, Effecting Ability: Charisma, Value: -2
+Removed gear: POTION for Player: Rick, Effecting Ability: Dexterity, Value: 3
+Removed gear: FOOTWEAR for Player: Rick, Effecting Ability: Dexterity, Value: 2
+Removed gear: BELT for Player: Rick, Effecting Ability: Strength, Value: 2
+Removed gear: BELT for Player: Rick, Effecting Ability: Constitution, Value: 2
+Striking Power of Attacker 22
+Defender Avoidance Ability 10
+Attack successful, Damage done: 8
+-------------------------- Move No 9 --------------------------
+Rick is attacking Nick
+
+Removed gear: POTION for Player: Rick, Effecting Ability: Dexterity, Value: -2
+Removed gear: HEADGEAR for Player: Rick, Effecting Ability: Constitution, Value: 3
+Removed gear: POTION for Player: Nick, Effecting Ability: Dexterity, Value: 3
+Removed gear: BELT for Player: Nick, Effecting Ability: Dexterity, Value: 3
+Removed gear: BELT for Player: Nick, Effecting Ability: Strength, Value: 3
+Striking Power of Attacker 24
+Defender Avoidance Ability 21
+Attack successful, Damage done: 18
+-------------------------- Move No 10 --------------------------
+Nick is attacking Rick
+
+Striking Power of Attacker 15
+Defender Avoidance Ability 10
+Attack successful, Damage done: 8
+-------------------------- Move No 11 --------------------------
+Rick is attacking Nick
+
+Striking Power of Attacker 21
+Defender Avoidance Ability 21
+Attack was unsuccessful
+-------------------------- Move No 12 --------------------------
+Nick is attacking Rick
+
+Striking Power of Attacker 12
+Defender Avoidance Ability 11
+Attack successful, Damage done: 8
+-------------------------- Move No 13 --------------------------
+Rick is attacking Nick
+
+Striking Power of Attacker 24
+Defender Avoidance Ability 20
+Attack successful, Damage done: 18
+-------------------------- Move No 14 --------------------------
+Nick is attacking Rick
+
+Striking Power of Attacker 11
+Defender Avoidance Ability 9
+Attack successful, Damage done: 8
+-------------------------- Move No 15 --------------------------
+Rick is attacking Nick
+
+Striking Power of Attacker 26
+Defender Avoidance Ability 19
+Attack successful, Damage done: 18
+-------------------------- Game Over --------------------------
+Nick Wins!!
+Do you want to reset game?
+Y
+
+************** Player Description **************
+Player Name: Nick
+Charisma: 18, Constitution: 22, Dexterity: 17, Strength: 9
+Gears - 
+HeadgearB
+PotionA
+PotionB
+PotionG
+PotionH
+PotionL
+PotionM
+BeltB
+BeltC
+BeltI
+BeltM
+FootwearA
+Weapon: Broadsword
+************** Player Description **************
+Player Name: Rick
+Charisma: 20, Constitution: 11, Dexterity: 22, Strength: 8
+Gears - 
+HeadgearE
+PotionC
+PotionD
+PotionE
+PotionF
+PotionI
+PotionJ
+PotionK
+PotionN
+PotionO
+BeltA
+BeltD
+BeltJ
+BeltK
+BeltL
+BeltN
+FootwearD
+Weapon: Axe
+Players are ready for Battle
+
+-------------------------- Move No 1 --------------------------
+Rick is attacking Nick
+
+Striking Power of Attacker 12
+Defender Avoidance Ability 21
+Attack was unsuccessful
+-------------------------- Move No 2 --------------------------
+Nick is attacking Rick
+
+Striking Power of Attacker 14
+Defender Avoidance Ability 25
+Attack was unsuccessful
+-------------------------- Move No 3 --------------------------
+Rick is attacking Nick
+
+Striking Power of Attacker 15
+Defender Avoidance Ability 21
+Attack was unsuccessful
+-------------------------- Move No 4 --------------------------
+Nick is attacking Rick
+
+Striking Power of Attacker 15
+Defender Avoidance Ability 24
+Attack was unsuccessful
+-------------------------- Move No 5 --------------------------
+Rick is attacking Nick
+
+Removed gear: POTION for Player: Rick, Effecting Ability: Charisma, Value: 2
+Removed gear: POTION for Player: Rick, Effecting Ability: Charisma, Value: 1
+Removed gear: POTION for Player: Rick, Effecting Ability: Dexterity, Value: 2
+Removed gear: HEADGEAR for Player: Nick, Effecting Ability: Constitution, Value: 3
+Removed gear: BELT for Player: Nick, Effecting Ability: Dexterity, Value: -1
+Removed gear: BELT for Player: Nick, Effecting Ability: Dexterity, Value: -1
+Removed gear: POTION for Player: Nick, Effecting Ability: Dexterity, Value: 3
+Removed gear: POTION for Player: Nick, Effecting Ability: Charisma, Value: 2
+Removed gear: POTION for Player: Nick, Effecting Ability: Constitution, Value: 1
+Striking Power of Attacker 11
+Defender Avoidance Ability 18
+Attack was unsuccessful
+-------------------------- Move No 6 --------------------------
+Nick is attacking Rick
+
+Removed gear: BELT for Player: Nick, Effecting Ability: Dexterity, Value: 2
+Removed gear: FOOTWEAR for Player: Nick, Effecting Ability: Dexterity, Value: 2
+Removed gear: BELT for Player: Rick, Effecting Ability: Charisma, Value: -3
+Removed gear: BELT for Player: Rick, Effecting Ability: Constitution, Value: -3
+Removed gear: POTION for Player: Rick, Effecting Ability: Constitution, Value: 3
+Removed gear: FOOTWEAR for Player: Rick, Effecting Ability: Dexterity, Value: -1
+Striking Power of Attacker 14
+Defender Avoidance Ability 23
+Attack was unsuccessful
+-------------------------- Move No 7 --------------------------
+Rick is attacking Nick
+
+Removed gear: BELT for Player: Rick, Effecting Ability: Charisma, Value: -1
+Removed gear: BELT for Player: Rick, Effecting Ability: Dexterity, Value: 3
+Removed gear: HEADGEAR for Player: Rick, Effecting Ability: Constitution, Value: 1
+Removed gear: POTION for Player: Rick, Effecting Ability: Constitution, Value: -2
+Removed gear: POTION for Player: Rick, Effecting Ability: Dexterity, Value: 2
+Striking Power of Attacker 11
+Defender Avoidance Ability 13
+Attack was unsuccessful
+-------------------------- Move No 8 --------------------------
+Nick is attacking Rick
+
+Removed gear: POTION for Player: Rick, Effecting Ability: Charisma, Value: -1
+Striking Power of Attacker 13
+Defender Avoidance Ability 17
+Attack was unsuccessful
+-------------------------- Move No 9 --------------------------
+Rick is attacking Nick
+
+Removed gear: BELT for Player: Rick, Effecting Ability: Charisma, Value: 1
+Removed gear: BELT for Player: Rick, Effecting Ability: Dexterity, Value: 1
+Removed gear: BELT for Player: Nick, Effecting Ability: Charisma, Value: 3
+Removed gear: BELT for Player: Nick, Effecting Ability: Constitution, Value: 3
+Removed gear: POTION for Player: Nick, Effecting Ability: Charisma, Value: 2
+Removed gear: POTION for Player: Nick, Effecting Ability: Charisma, Value: 3
+Striking Power of Attacker 15
+Defender Avoidance Ability 16
+Attack was unsuccessful
+-------------------------- Move No 10 --------------------------
+Nick is attacking Rick
+
+Striking Power of Attacker 12
+Defender Avoidance Ability 18
+Attack was unsuccessful
+-------------------------- Move No 11 --------------------------
+Rick is attacking Nick
+
+Striking Power of Attacker 17
+Defender Avoidance Ability 16
+Attack successful, but Damage done 0 
+-------------------------- Move No 12 --------------------------
+Nick is attacking Rick
+
+Striking Power of Attacker 18
+Defender Avoidance Ability 19
+Attack was unsuccessful
+-------------------------- Move No 13 --------------------------
+Rick is attacking Nick
+
+Striking Power of Attacker 17
+Defender Avoidance Ability 16
+Attack successful, but Damage done 0 
+-------------------------- Move No 14 --------------------------
+Nick is attacking Rick
+
+Striking Power of Attacker 14
+Defender Avoidance Ability 17
+Attack was unsuccessful
+-------------------------- Move No 15 --------------------------
+Rick is attacking Nick
+
+Striking Power of Attacker 12
+Defender Avoidance Ability 15
+Attack was unsuccessful
+-------------------------- Move No 16 --------------------------
+Nick is attacking Rick
+
+Striking Power of Attacker 15
+Defender Avoidance Ability 18
+Attack was unsuccessful
+-------------------------- Move No 17 --------------------------
+Rick is attacking Nick
+
+Striking Power of Attacker 13
+Defender Avoidance Ability 13
+Attack was unsuccessful
+-------------------------- Move No 18 --------------------------
+Nick is attacking Rick
+
+Striking Power of Attacker 10
+Defender Avoidance Ability 20
+Attack was unsuccessful
+-------------------------- Move No 19 --------------------------
+Rick is attacking Nick
+
+Striking Power of Attacker 14
+Defender Avoidance Ability 15
+Attack was unsuccessful
+-------------------------- Move No 20 --------------------------
+Nick is attacking Rick
+
+Striking Power of Attacker 11
+Defender Avoidance Ability 20
+Attack was unsuccessful
+-------------------------- Move No 21 --------------------------
+Rick is attacking Nick
+
+Striking Power of Attacker 11
+Defender Avoidance Ability 14
+Attack was unsuccessful
+-------------------------- Move No 22 --------------------------
+Nick is attacking Rick
+
+Striking Power of Attacker 10
+Defender Avoidance Ability 19
+Attack was unsuccessful
+-------------------------- Move No 23 --------------------------
+Rick is attacking Nick
+
+Striking Power of Attacker 13
+Defender Avoidance Ability 16
+Attack was unsuccessful
+-------------------------- Move No 24 --------------------------
+Nick is attacking Rick
+
+Striking Power of Attacker 17
+Defender Avoidance Ability 16
+Attack successful, Damage done: 4
+-------------------------- Move No 25 --------------------------
+Rick is attacking Nick
+
+Striking Power of Attacker 12
+Defender Avoidance Ability 15
+Attack was unsuccessful
+-------------------------- Move No 26 --------------------------
+Nick is attacking Rick
+
+Striking Power of Attacker 18
+Defender Avoidance Ability 20
+Attack was unsuccessful
+-------------------------- Move No 27 --------------------------
+Rick is attacking Nick
+
+Striking Power of Attacker 9
+Defender Avoidance Ability 16
+Attack was unsuccessful
+-------------------------- Move No 28 --------------------------
+Nick is attacking Rick
+
+Striking Power of Attacker 16
+Defender Avoidance Ability 18
+Attack was unsuccessful
+-------------------------- Move No 29 --------------------------
+Rick is attacking Nick
+
+Striking Power of Attacker 12
+Defender Avoidance Ability 14
+Attack was unsuccessful
+-------------------------- Move No 30 --------------------------
+Nick is attacking Rick
+
+Striking Power of Attacker 13
+Defender Avoidance Ability 19
+Attack was unsuccessful
+-------------------------- Move No 31 --------------------------
+Rick is attacking Nick
+
+Striking Power of Attacker 13
+Defender Avoidance Ability 13
+Attack was unsuccessful
+"-------------------------- Game Over --------------------
+------Moves Over, Game Draw
+Do you want to reset game?

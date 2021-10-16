@@ -10,20 +10,33 @@ import equipment.Potion;
 import player.Ability;
 import randomizer.FixedRandGenerator;
 
-import static org.junit.Assert.*;
+import static org.junit.Assert.assertEquals;
 
+/**
+ * Test class to check all the implementation of equipment type potion.
+ */
 public class PotionTest {
 
-  Equipment potion;
+  private Equipment potion;
 
   @Before
   public void setUp() throws Exception {
-    this.potion =  new Potion("potions N", new FixedRandGenerator(2));
+    this.potion = new Potion("potions N", new FixedRandGenerator(2));
+  }
+
+  @Test(expected = IllegalArgumentException.class)
+  public void testForNullPotionName() {
+    new Potion(null, new FixedRandGenerator(2));
+  }
+
+  @Test(expected = IllegalArgumentException.class)
+  public void testForNullRandomizer() {
+    new Potion("Potion", null);
   }
 
   @Test
   public void compareTo() {
-    Equipment potions1 = new Potion("potions M",new FixedRandGenerator(3));
+    Equipment potions1 = new Potion("potions M", new FixedRandGenerator(3));
     assertEquals(-1, potions1.compareTo(this.potion));
   }
 
@@ -50,7 +63,7 @@ public class PotionTest {
 
   @Test
   public void getEquipmentType() {
-    Assert.assertEquals(EquipmentType.POTION,this.potion.getEquipmentType());
+    Assert.assertEquals(EquipmentType.POTION, this.potion.getEquipmentType());
   }
 
   @Test
@@ -60,6 +73,6 @@ public class PotionTest {
 
   @Test
   public void getMove() {
-    assertEquals(2,this.potion.getMove());
+    assertEquals(2, this.potion.getMove());
   }
 }

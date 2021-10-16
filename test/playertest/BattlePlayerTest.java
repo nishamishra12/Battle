@@ -19,16 +19,22 @@ import player.Player;
 import randomizer.FixedRandGenerator;
 import randomizer.RandomGenerator;
 import weapon.Broadsword;
+import weapon.Flail;
+import weapon.TwoHandedSword;
 import weapon.Weapon;
 
 import static org.junit.Assert.assertEquals;
+import static org.junit.Assert.assertTrue;
 
+/**
+ * Test class to check all the implementation of the player playing in the battle arena.
+ */
 public class BattlePlayerTest {
 
-  Player player;
-  RandomGenerator randomGenerator = new FixedRandGenerator(2);
-  List<Equipment> equipmentList;
-  Weapon weapon;
+  private Player player;
+  private RandomGenerator randomGenerator = new FixedRandGenerator(2);
+  private List<Equipment> equipmentList;
+  private Weapon weapon;
 
   @Before
   public void setUp() throws Exception {
@@ -73,6 +79,26 @@ public class BattlePlayerTest {
   }
 
   @Test
+  public void testForHalfDamageForFlail() {
+    assertTrue(player.getDexterity() < 14);
+    Weapon flail = new Flail(randomGenerator);
+    player.setCurrentWeapon(flail);
+    player.calculatePlayerPowers(player);
+    int playerDamage = player.getPotentialDamage() - player.getStrength();
+    assertEquals(playerDamage, flail.getDamage() / 2);
+  }
+
+  @Test
+  public void testForHalfDamageForTwoHandedSword() {
+    assertTrue(player.getStrength() < 14);
+    Weapon twoHandedSword = new TwoHandedSword(randomGenerator);
+    player.setCurrentWeapon(twoHandedSword);
+    player.calculatePlayerPowers(player);
+    int playerDamage = player.getPotentialDamage() - player.getStrength();
+    assertEquals(playerDamage, twoHandedSword.getDamage() / 2);
+  }
+
+  @Test
   public void calculatePlayerPowers() {
     player.setCurrentWeapon(weapon);
     player.calculatePlayerPowers(player);
@@ -81,7 +107,100 @@ public class BattlePlayerTest {
     assertEquals(4, player.getAvoidanceAbility());
     assertEquals(4, player.getPotentialDamage());
     assertEquals(2, player.getActualDamage());
+  }
 
+  @Test(expected = IllegalArgumentException.class)
+  public void testForNullObject() {
+    player.calculatePlayerPowers(null);
+  }
+
+  @Test
+  public void addHeadgearChangeAbility() {
+    assertEquals(2, player.getConstitution());
+    player.addEquipment(new HeadGear("HG", randomGenerator));
+    player.calculateInitialHealth();
+    assertEquals(4, player.getConstitution());
+  }
+
+  @Test
+  public void addFootwearChangeAbility() {
+    assertEquals(2, player.getDexterity());
+    player.addEquipment(new Footwear("FW", randomGenerator));
+    player.calculateInitialHealth();
+    assertEquals(4, player.getDexterity());
+  }
+
+  @Test
+  public void addPotionChangeAbility() {
+    assertEquals(2, player.getStrength());
+    randomGenerator = new FixedRandGenerator(3);
+    player.addEquipment(new Potion("PT", randomGenerator));
+    player.addEquipment(new Potion("PT2", randomGenerator));
+    player.calculateInitialHealth();
+    assertEquals(8, player.getStrength());
+  }
+
+  @Test
+  public void addBeltChangeAbility() {
+    assertEquals(2, player.getCharisma());
+    randomGenerator = new FixedRandGenerator(2,2);
+    player.addEquipment(new Belt("Belt2", randomGenerator));
+    player.calculateInitialHealth();
+    assertEquals(6, player.getCharisma());
+  }
+
+  @Test
+  public void removeHeadgearChangeAbility() {
+    //original Constitution
+    assertEquals(2, player.getConstitution());
+    player.addEquipment(new HeadGear("HG", randomGenerator));
+    player.calculateInitialHealth();
+    //constitution after adding gear
+    assertEquals(4, player.getConstitution());
+    //remove headgear, constitution should go back to original
+    player.removeGears(2);
+    assertEquals(2,player.getConstitution());
+  }
+
+  @Test
+  public void removeFootwearChangeAbility() {
+    //original Dexterity
+    assertEquals(2, player.getDexterity());
+    player.addEquipment(new Footwear("FW", randomGenerator));
+    player.calculateInitialHealth();
+    //dexterity after adding gear
+    assertEquals(4, player.getDexterity());
+    //remove footwear, dexterity should go back to original
+    player.removeGears(2);
+    assertEquals(2,player.getDexterity());
+  }
+
+  @Test
+  public void removePotionChangeAbility() {
+    //original Constitution
+    assertEquals(2, player.getStrength());
+    randomGenerator = new FixedRandGenerator(3);
+    player.addEquipment(new Potion("PT", randomGenerator));
+    player.calculateInitialHealth();
+    //constitution after adding gear
+    assertEquals(5, player.getStrength());
+    //remove headgear, constitution should go back to original
+    player.removeGears(3);
+    assertEquals(2,player.getStrength());
+  }
+
+  @Test
+  public void removeBeltChangeAbility() {
+    //original Constitution
+    assertEquals(2, player.getCharisma());
+    randomGenerator = new FixedRandGenerator(2,2);
+    player.addEquipment(new Belt("Belt", randomGenerator));
+    player.calculateInitialHealth();
+    //constitution after adding gear
+    assertEquals(6, player.getCharisma());
+    //remove headgear, constitution should go back to original
+    player.removeGears(2);
+    assertEquals(2,player.getCharisma());
   }
 
   @Test
@@ -197,13 +316,18 @@ public class BattlePlayerTest {
   @Test
   public void getCurrentWeapon() {
     player.setCurrentWeapon(weapon);
-    assertEquals(weapon,player.getCurrentWeapon());
+    assertEquals(weapon, player.getCurrentWeapon());
   }
 
   @Test
   public void setCurrentWeapon() {
     player.setCurrentWeapon(weapon);
-    assertEquals(weapon,player.getCurrentWeapon());
+    assertEquals(weapon, player.getCurrentWeapon());
+  }
+
+  @Test (expected = IllegalArgumentException.class)
+  public void testForNullCurrentWeapon() {
+    player.setCurrentWeapon(null);
   }
 
   @Test
@@ -229,4 +353,37 @@ public class BattlePlayerTest {
     gearBag.put(EquipmentType.FOOTWEAR, list4);
     assertEquals(gearBag, player.getPlayerBag());
   }
+
+  @Test(expected = IllegalArgumentException.class)
+  public void testForNullEquipmentPassed() {
+    player.addEquipment(null);
+  }
+
+  @Test
+  public void testForOnlyOneHeadgear() {
+    player.addEquipment(new HeadGear("Headgear abc", randomGenerator));
+    player.addEquipment(new HeadGear("Headgear xyz", randomGenerator));
+    //only one headgear should be added
+    assertEquals(1, player.getPlayerBag().get(EquipmentType.HEADGEAR).size());
+  }
+
+  @Test
+  public void testForOnlyOneFootwear() {
+    player.addEquipment(new Footwear("Footwear abc", randomGenerator));
+    player.addEquipment(new Footwear("Footwear xyz", randomGenerator));
+    //only one headgear should be added
+    assertEquals(1, player.getPlayerBag().get(EquipmentType.FOOTWEAR).size());
+  }
+
+  @Test
+  public void testForBeltUnits() {
+    randomGenerator = new FixedRandGenerator(2);
+    player = new BattlePlayer("Bob", randomGenerator);
+    player.addEquipment(new Belt("Belt A", randomGenerator));
+    player.addEquipment(new Belt("Belt B", randomGenerator));
+    player.addEquipment(new Belt("Belt C", randomGenerator));
+    //last object not added as size after adding will be greater than 10
+    assertEquals(2, player.getPlayerBag().get(EquipmentType.BELT).size());
+  }
+
 }

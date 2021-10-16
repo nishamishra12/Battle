@@ -1,5 +1,8 @@
 package equipment;
 
+/**
+ * This is an enumeration for Equipment type of player.
+ */
 public enum EquipmentType {
   BELT("Belt"),
   FOOTWEAR("Footwear"),

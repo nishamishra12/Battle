@@ -1,16 +1,17 @@
 package equipment;
 
+/**
+ * This is an enumeration for size of the belt.
+ */
 public enum BeltSize {
 
-  SMALL("SMALL", 1),
-  MEDIUM("MEDIUM", 2),
-  LARGE("LARGE", 4);
+  SMALL(1),
+  MEDIUM(2),
+  LARGE(4);
 
-  private final String sizeName;
   private final int sizeValue;
 
-  BeltSize(String sizeName, int sizeValue) {
-    this.sizeName = sizeName;
+  BeltSize(int sizeValue) {
     this.sizeValue = sizeValue;
   }
 

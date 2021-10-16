@@ -7,20 +7,33 @@ import org.junit.Test;
 import equipment.Belt;
 import equipment.Equipment;
 import equipment.EquipmentType;
-import equipment.Footwear;
 import player.Ability;
 import randomizer.FixedRandGenerator;
 
-import static org.junit.Assert.*;
+import static org.junit.Assert.assertEquals;
 
+/**
+ * Test class to check all the implementation of equipment type belt.
+ */
 public class BeltTest {
 
-  Equipment belt;
+  private Equipment belt;
 
   @Before
   public void setUp() throws Exception {
     this.belt =  new Belt("belt N", new FixedRandGenerator(2));
   }
+
+  @Test (expected = IllegalArgumentException.class)
+  public void testForNullBeltName() {
+    new Belt(null, new FixedRandGenerator(2));
+  }
+
+  @Test (expected = IllegalArgumentException.class)
+  public void testForNullRandomizer() {
+    new Belt("Belt", null);
+  }
+
 
   @Test
   public void compareTo() {
@@ -31,6 +44,12 @@ public class BeltTest {
   @Test
   public void getEffectValue() {
     assertEquals(2, this.belt.getEffectValue());
+  }
+
+  @Test
+  public void testForTwoEffectAbility() {
+    assertEquals(Ability.CHARISMA, this.belt.getEffectAbility().get(0));
+    assertEquals(Ability.CHARISMA, this.belt.getEffectAbility().get(1));
   }
 
   @Test

@@ -1,18 +1,21 @@
 package player;
 
+/**
+ * This is an enumeration for Ability Values of the Player.
+ */
 public enum Ability {
-    DEXTERITY("Dexterity"),
-    CONSTITUTION("Constitution"),
-    CHARISMA("Charisma"),
-    STRENGTH("Strength");
+  DEXTERITY("Dexterity"),
+  CONSTITUTION("Constitution"),
+  CHARISMA("Charisma"),
+  STRENGTH("Strength");
 
-    private final String abilityName;
+  private final String abilityName;
 
-    Ability(String abilityName) {
-      this.abilityName = abilityName;
-    }
+  Ability(String abilityName) {
+    this.abilityName = abilityName;
+  }
 
-    public String abilityName() {
-      return abilityName;
-    }
+  public String abilityName() {
+    return abilityName;
+  }
 }

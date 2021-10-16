@@ -59,7 +59,6 @@ The project creates a battle arena which will allow two players to enter into th
 ##Design/Model Changes
 1. Initially all the gears were directly implementing the Equipment interface to ensure the highest level of abstraction. In the new design, the equipment class extends an abstract class which in turn implements the Equipment interface. The abstract class is created to ensure double dispatch of compareTo between the gear classes since the gears need to be sorted in lexicographical order.
 2. Initially the random generator was a concrete class, in the new design random generator interface is created wit two concrete classes Random Generator and Fixed Generator. The fixed generator is a mock class which helps in testing.
-3. Enum for Equipment Type: Initial design did not contain enumerations for Equipment Type. It was added in the new design because each time a string is created, instead of using this string that have precise value it is better design to use enumerations
 
 ##Assumptions
 1. The gears of the players are set temporary basis on the move of the player. The move till which any gear if valid is randomly generated

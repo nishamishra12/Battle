@@ -1,0 +1,44 @@
+****** Welcome to Jumptastic Games!!! ******
+Player 1 created
+Player 2 created
+************** Player Description **************
+Player Name: Nick
+Charisma: 15, Constitution: 14, Dexterity: 23, Strength: 11
+Gears - 
+HeadgearA
+PotionA
+PotionD
+PotionE
+PotionG
+PotionI
+PotionJ
+PotionL
+PotionN
+PotionO
+BeltA
+BeltB
+BeltG
+BeltH
+BeltL
+FootwearE
+Weapon: TwoHandedSword
+************** Player Description **************
+Player Name: Rick
+Charisma: 15, Constitution: 13, Dexterity: 15, Strength: 7
+Gears - 
+HeadgearD
+PotionB
+PotionC
+PotionF
+PotionH
+PotionK
+PotionM
+BeltD
+BeltI
+BeltJ
+BeltO
+FootwearB
+Weapon: TwoHandedSword
+Players are ready for Battle
+Charisma same! Game Draw, No one Wins
+Do you want to reset game?

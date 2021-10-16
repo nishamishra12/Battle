@@ -13,11 +13,14 @@ import equipment.HeadGear;
 import randomizer.FixedRandGenerator;
 import randomizer.RandomGenerator;
 
-import static org.junit.Assert.*;
+import static org.junit.Assert.assertEquals;
 
+/**
+ * Test class to check all the implementation of the fixed random generator.
+ */
 public class FixedRandGeneratorTest {
 
-  RandomGenerator fixedRandGenerator;
+  private RandomGenerator fixedRandGenerator;
 
   @Before
   public void setUp() throws Exception {
