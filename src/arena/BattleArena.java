@@ -29,8 +29,8 @@ public class BattleArena implements Arena {
 
   private final Player initialPlayer1;
   private final Player initialPlayer2;
+  private final RandomGenerator randomGenerator;
   private List<Weapon> weaponArmory;
-  private RandomGenerator randomGenerator;
   private List<Equipment> gearBag = new ArrayList<>();
   private Player player1;
   private Player player2;
@@ -58,7 +58,22 @@ public class BattleArena implements Arena {
     this.initialPlayer1 = new BattlePlayer(name1, this.randomGenerator);
     this.initialPlayer2 = new BattlePlayer(name2, this.randomGenerator);
     createGearBag();
+
+  }
+
+  /**
+   * {@inheritDoc}
+   */
+  @Override
+  public void equipPlayerWithGears() {
     assignBagToPlayer();
+  }
+
+  /**
+   * {@inheritDoc}
+   */
+  @Override
+  public void requestWeaponForPlayer() {
     giveWeaponToPlayer(initialPlayer1);
     giveWeaponToPlayer(initialPlayer2);
     initialPlayer1.calculateInitialHealth();
@@ -128,14 +143,14 @@ public class BattleArena implements Arena {
       attack(defendant, attacker, stringBuilder);
     } else {
       if (player1.getHealth() <= 0 && player2.getHealth() > 0) {
-        stringBuilder.append('\n' + "-------------------------- Game Over " +
-                "--------------------------" + '\n' + player1.getName() + " Wins!!");
+        stringBuilder.append('\n' + "-------------------------- Game Over "
+                + "--------------------------" + '\n' + player1.getName() + " Wins!!");
       } else if (player1.getHealth() > 0 && player2.getHealth() <= 0) {
-        stringBuilder.append('\n' + "-------------------------- Game Over " +
-                "--------------------------" + '\n' + player2.getName() + " Wins!!");
+        stringBuilder.append('\n' + "-------------------------- Game Over "
+                + "--------------------------" + '\n' + player2.getName() + " Wins!!");
       } else {
-        stringBuilder.append('\n' + "\"-------------------------- Game Over --------------------" +
-                '\n' + "------" + "Moves Over, Game Draw");
+        stringBuilder.append('\n' + "\"-------------------------- Game Over --------------------"
+                + '\n' + "------" + "Moves Over, Game Draw");
       }
     }
     return stringBuilder;
@@ -171,6 +186,7 @@ public class BattleArena implements Arena {
    */
   private String getDescriptionHelper(Player player) {
     List<Equipment> playerGears = new ArrayList<>();
+
     for (Map.Entry<EquipmentType, List<Equipment>> entry : player.getPlayerBag().entrySet()) {
       playerGears.addAll(entry.getValue());
     }
@@ -178,10 +194,11 @@ public class BattleArena implements Arena {
     StringBuilder stringBuilder = new StringBuilder();
     stringBuilder.append("************** Player Description **************" + '\n'
                     + "Player Name: ").append(player.getName() + '\n')
-            .append("Charisma: " + player.getCharisma() + "," +
-                    " Constitution: " + player.getConstitution()
-                    + ", Dexterity: " + player.getDexterity() + "," +
-                    " Strength: " + player.getStrength() + '\n').append("Gears - " + '\n');
+            .append("Charisma: " + player.getCharisma() + ","
+                    + " Constitution: " + player.getConstitution()
+                    + ", Dexterity: " + player.getDexterity() + ","
+                    + " Strength: " + player.getStrength() + '\n').append("Gears - " + '\n');
+
     for (int i = 0; i < playerGears.size(); i++) {
       stringBuilder.append(playerGears.get(i).getName()).append('\n');
     }

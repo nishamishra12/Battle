@@ -15,6 +15,13 @@ import equipment.HeadGear;
 import equipment.Potion;
 import randomizer.FixedRandGenerator;
 import randomizer.RandomGenerator;
+import weapon.Axe;
+import weapon.Barehanded;
+import weapon.Broadsword;
+import weapon.Flail;
+import weapon.Katana;
+import weapon.TwoHandedSword;
+import weapon.Weapon;
 
 import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertNotEquals;
@@ -31,6 +38,15 @@ public class BattleArenaTest {
   @Before
   public void setUp() throws Exception {
     arena = new BattleArena("Tom", "Jerry", randomGenerator);
+    arena.equipPlayerWithGears();
+    arena.requestWeaponForPlayer();
+  }
+
+  @Test
+  public void testForPlayerIsBareHanded() {
+    arena = new BattleArena("Chick Jr", "Duck Jr", randomGenerator);
+    assertTrue(arena.getPlayer1().getCurrentWeapon() instanceof Barehanded);
+    assertTrue(arena.getPlayer2().getCurrentWeapon() instanceof Barehanded);
   }
 
   @Test(expected = IllegalArgumentException.class)
@@ -66,9 +82,33 @@ public class BattleArenaTest {
   }
 
   @Test
+  public void equipPlayerWithGears() {
+    arena = new BattleArena("John", "Marry", randomGenerator);
+    assertEquals(0, arena.getPlayer1().getPlayerBag().size());
+    assertEquals(0, arena.getPlayer2().getPlayerBag().size());
+    arena.equipPlayerWithGears();
+    //gears added to players and the size of the player bag changed.
+    assertNotEquals(0, arena.getPlayer1().getPlayerBag().size());
+    assertNotEquals(0, arena.getPlayer2().getPlayerBag().size());
+  }
+
+  @Test
+  public void equipPlayerWithWeapon() {
+    arena = new BattleArena("John", "Marry", randomGenerator);
+    assertTrue(arena.getPlayer1().getCurrentWeapon() instanceof Barehanded);
+    assertTrue(arena.getPlayer2().getCurrentWeapon() instanceof Barehanded);
+    arena.requestWeaponForPlayer();
+    //weapon given to players.
+    assertTrue(arena.getPlayer1().getCurrentWeapon() instanceof Flail);
+    assertTrue(arena.getPlayer2().getCurrentWeapon() instanceof Flail);
+  }
+
+  @Test
   public void testForAttackerHasGreaterCharisma() {
     randomGenerator = new FixedRandGenerator(2, 3);
     arena = new BattleArena("Jin", "Jun", randomGenerator);
+    arena.equipPlayerWithGears();
+    arena.requestWeaponForPlayer();
     String s = "Players are ready for Battle\n" +
             "\n" +
             "-------------------------- Move No 1 --------------------------\n" +
@@ -90,6 +130,8 @@ public class BattleArenaTest {
   public void testForSuccessfulAttack() {
     randomGenerator = new FixedRandGenerator(2, 3);
     arena = new BattleArena("Jin", "Jun", randomGenerator);
+    arena.equipPlayerWithGears();
+    arena.requestWeaponForPlayer();
     String s = "Players are ready for Battle\n" +
             "\n" +
             "-------------------------- Move No 1 --------------------------\n" +
@@ -111,6 +153,8 @@ public class BattleArenaTest {
   public void testForUnSuccessfulAttack() {
     randomGenerator = new FixedRandGenerator(2, 3, 2, 1, 1, 3, 3, 1, 1, 3);
     arena = new BattleArena("Jin", "Jun", randomGenerator);
+    arena.equipPlayerWithGears();
+    arena.requestWeaponForPlayer();
     //As striking power of Attacker is lesser than Defender avoidance ability,
     // hence the attack is successful and no damage is incurred
     assertTrue(arena.startBattle().contains("Attack was unsuccessful"));
@@ -165,11 +209,11 @@ public class BattleArenaTest {
   @Test
   public void getArmory() {
     assertEquals(5, arena.getWeaponArmory().size());
-    assertEquals("Axe", arena.getWeaponArmory().get(0).getClass().getSimpleName());
-    assertEquals("Flail", arena.getWeaponArmory().get(1).getClass().getSimpleName());
-    assertEquals("Katana", arena.getWeaponArmory().get(2).getClass().getSimpleName());
-    assertEquals("Broadsword", arena.getWeaponArmory().get(3).getClass().getSimpleName());
-    assertEquals("TwoHandedSword", arena.getWeaponArmory().get(4).getClass().getSimpleName());
+    assertTrue(arena.getWeaponArmory().get(0) instanceof Axe);
+    assertTrue(arena.getWeaponArmory().get(1) instanceof Flail);
+    assertTrue(arena.getWeaponArmory().get(2) instanceof Katana);
+    assertTrue(arena.getWeaponArmory().get(3) instanceof Broadsword);
+    assertTrue(arena.getWeaponArmory().get(4) instanceof TwoHandedSword);
   }
 
   @Test
@@ -234,7 +278,7 @@ public class BattleArenaTest {
   }
 
   @Test
-  public void testToCheckPlayersAreAssignedRandomGears() {
+  public void testForRandomGears() {
     arena = new BattleArena("Tom", "Jerry", randomGenerator);
     //get original List of 40 equipments
     List<Equipment> originalList = arena.getGearBag();
@@ -252,7 +296,19 @@ public class BattleArenaTest {
     }
 
     //Check if original list is same as merger of 2 player lists.
-    assertNotEquals(originalList,playerGears);
-
+    assertNotEquals(originalList, playerGears);
   }
+
+  @Test
+  public void testForRandomWeapon() {
+    randomGenerator = new FixedRandGenerator(1, 2, 3, 2);
+    arena = new BattleArena("Karan", "Arjun", randomGenerator);
+    arena.requestWeaponForPlayer();
+    Weapon weapon1 = arena.getPlayer1().getCurrentWeapon();
+    arena.requestWeaponForPlayer();
+    Weapon weapon2 = arena.getPlayer1().getCurrentWeapon();
+    //both the weapons are different as it is randomly assigned
+    assertNotEquals(weapon1, weapon2);
+  }
+
 }

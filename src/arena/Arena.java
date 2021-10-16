@@ -53,16 +53,26 @@ public interface Arena {
           throws IllegalArgumentException;
 
   /**
-   * This method provides the object of Player1
+   * This method provides the object of Player1.
    *
    * @return player1 object
    */
   public Player getPlayer1();
 
   /**
-   * This method provides the object of Player2
+   * This method provides the object of Player2.
    *
    * @return player2 object
    */
   public Player getPlayer2();
+
+  /**
+   * This method equips both the players playing in th arena with gears.
+   */
+  public void equipPlayerWithGears();
+
+  /**
+   * This method randomly assigns weapons to both the players playing in the arena.
+   */
+  public void requestWeaponForPlayer();
 }

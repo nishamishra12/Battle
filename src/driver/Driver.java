@@ -24,8 +24,13 @@ public class Driver {
     System.out.println("****** Welcome to Jumptastic Games!!! ******"); //point 1
 
     try {
+      //Players to enter arena with barehanded
       battleArena = new BattleArena("Nick", "Rick", randomGenerator);
       System.out.println("Player 1 created" + '\n' + "Player 2 created");
+      //Equip players with Gears
+      battleArena.equipPlayerWithGears();
+      //Give Weapon to Players
+      battleArena.requestWeaponForPlayer();
       System.out.println(battleArena.getPlayerDescription());
       System.out.println(battleArena.startBattle());
       System.out.println("Do you want to reset game?");
