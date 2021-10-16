@@ -8,6 +8,7 @@ import java.util.Map;
 import equipment.Equipment;
 import equipment.EquipmentType;
 import randomizer.RandomGenerator;
+import weapon.Barehanded;
 import weapon.Weapon;
 
 /**
@@ -45,6 +46,7 @@ public class BattlePlayer implements Player {
     this.dexterity = randomGenerator.getNextInt(6, 18);
     this.charisma = randomGenerator.getNextInt(6, 18);
     this.gearBag = new HashMap<>();
+    this.currentWeapon = new Barehanded();
   }
 
   /**

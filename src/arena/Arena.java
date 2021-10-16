@@ -3,6 +3,7 @@ package arena;
 import java.util.List;
 
 import equipment.Equipment;
+import player.Player;
 import weapon.Weapon;
 
 /**
@@ -50,4 +51,18 @@ public interface Arena {
    */
   public List<Equipment> getSortedGearList(List<Equipment> gearList)
           throws IllegalArgumentException;
+
+  /**
+   * This method provides the object of Player1
+   *
+   * @return player1 object
+   */
+  public Player getPlayer1();
+
+  /**
+   * This method provides the object of Player2
+   *
+   * @return player2 object
+   */
+  public Player getPlayer2();
 }

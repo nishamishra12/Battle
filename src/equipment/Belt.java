@@ -8,7 +8,7 @@ import player.Ability;
 import randomizer.RandomGenerator;
 
 /**
- * This class represents the Equipment type belt and and extends the abstract class.
+ * This class represents the Equipment type belt and extends the abstract class.
  */
 public class Belt extends EquipmentAbstract {
 

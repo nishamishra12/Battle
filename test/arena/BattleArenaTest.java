@@ -5,6 +5,7 @@ import org.junit.Test;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Map;
 
 import equipment.Belt;
 import equipment.Equipment;
@@ -16,6 +17,7 @@ import randomizer.FixedRandGenerator;
 import randomizer.RandomGenerator;
 
 import static org.junit.Assert.assertEquals;
+import static org.junit.Assert.assertNotEquals;
 import static org.junit.Assert.assertTrue;
 
 /**
@@ -69,12 +71,16 @@ public class BattleArenaTest {
     arena = new BattleArena("Jin", "Jun", randomGenerator);
     String s = "Players are ready for Battle\n" +
             "\n" +
-            "-------------------------- Move No 1 --------------------------\n"
-            + "Jun is attacking Jin\n" + "\n"
-            + "Striking Power of Attacker 21\n"
-            + "Defender Avoidance Ability 2\n"
-            + "Attack successful, Damage done: 23\n"
-            + "-------------------------- Game Over --------------------------\n" + "Jin Wins!!";
+            "-------------------------- Move No 1 --------------------------\n" +
+            "Jun is attacking Jin\n" +
+            "\n" +
+            "Striking Power of Attacker 21\n" +
+            "Defender Avoidance Ability 2\n" +
+            "Health of the attacker Jun: 59\n" +
+            "Health of the defendant Jin: 18\n" +
+            "Attack successful, Damage done: 23\n" +
+            "-------------------------- Game Over --------------------------\n" +
+            "Jin Wins!!";
     //you can see that as Jun will have random value 3, he will have more charisma
     // and hence Jun is starting the battle and is the attacker
     assertEquals(s, arena.startBattle());
@@ -86,12 +92,16 @@ public class BattleArenaTest {
     arena = new BattleArena("Jin", "Jun", randomGenerator);
     String s = "Players are ready for Battle\n" +
             "\n" +
-            "-------------------------- Move No 1 --------------------------\n"
-            + "Jun is attacking Jin\n" + "\n"
-            + "Striking Power of Attacker 21\n"
-            + "Defender Avoidance Ability 2\n"
-            + "Attack successful, Damage done: 23\n"
-            + "-------------------------- Game Over --------------------------\n" + "Jin Wins!!";
+            "-------------------------- Move No 1 --------------------------\n" +
+            "Jun is attacking Jin\n" +
+            "\n" +
+            "Striking Power of Attacker 21\n" +
+            "Defender Avoidance Ability 2\n" +
+            "Health of the attacker Jun: 59\n" +
+            "Health of the defendant Jin: 18\n" +
+            "Attack successful, Damage done: 23\n" +
+            "-------------------------- Game Over --------------------------\n" +
+            "Jin Wins!!";
     //As striking power of Attacker is greater than Defender,
     // the attack is successful and damage is done
     assertEquals(s, arena.startBattle());
@@ -209,5 +219,40 @@ public class BattleArenaTest {
             + "BeltO\n"
             + "Weapon: Flail";
     assertEquals(s, arena.getPlayerDescription());
+  }
+
+  @Test
+  public void getPlayer1() {
+    arena = new BattleArena("Tom", "Jerry", randomGenerator);
+    assertEquals("Tom", arena.getPlayer1().getName());
+  }
+
+  @Test
+  public void getPlayer2() {
+    arena = new BattleArena("Tom", "Jerry", randomGenerator);
+    assertEquals("Jerry", arena.getPlayer2().getName());
+  }
+
+  @Test
+  public void testToCheckPlayersAreAssignedRandomGears() {
+    arena = new BattleArena("Tom", "Jerry", randomGenerator);
+    //get original List of 40 equipments
+    List<Equipment> originalList = arena.getGearBag();
+
+    List<Equipment> playerGears = new ArrayList<>();
+    //get equipment list for Player 1;
+    for (Map.Entry<EquipmentType, List<Equipment>> entry :
+            arena.getPlayer1().getPlayerBag().entrySet()) {
+      playerGears.addAll(entry.getValue());
+    }
+    //get equipment list for player2
+    for (Map.Entry<EquipmentType, List<Equipment>> entry :
+            arena.getPlayer2().getPlayerBag().entrySet()) {
+      playerGears.addAll(entry.getValue());
+    }
+
+    //Check if original list is same as merger of 2 player lists.
+    assertNotEquals(originalList,playerGears);
+
   }
 }

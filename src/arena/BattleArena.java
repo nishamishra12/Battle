@@ -87,7 +87,7 @@ public class BattleArena implements Arena {
   }
 
   /**
-   * Private Helper method which performs the actions in every move for the battle.
+   * Private Helper method which performs the actions for every move for the battle.
    *
    * @param attacker      this parameter takes the attacking player object
    * @param defendant     this parameter takes the defending player object
@@ -108,6 +108,10 @@ public class BattleArena implements Arena {
 
       stringBuilder.append('\n' + "Striking Power of Attacker " + attacker.getStrikingPower());
       stringBuilder.append('\n' + "Defender Avoidance Ability " + defendant.getAvoidanceAbility());
+      stringBuilder.append('\n' + "Health of the attacker " + attacker.getName() + ": "
+              + attacker.getHealth());
+      stringBuilder.append('\n' + "Health of the defendant " + defendant.getName() + ": "
+              + defendant.getHealth());
       if (attacker.getStrikingPower() > defendant.getAvoidanceAbility()
               && attacker.getActualDamage() > 0) {
         stringBuilder.append('\n' + "Attack successful,").append(" Damage done: "
@@ -149,6 +153,7 @@ public class BattleArena implements Arena {
   /**
    * {@inheritDoc}
    */
+  @Override
   public List<Equipment> getSortedGearList(List<Equipment> gearList) {
     if (gearList == null) {
       throw new IllegalArgumentException("Gear List cannot be null");
@@ -259,6 +264,7 @@ public class BattleArena implements Arena {
   /**
    * {@inheritDoc}
    */
+  @Override
   public List<Equipment> getGearBag() {
     List<Equipment> equipmentList = new ArrayList<>(this.gearBag);
     return equipmentList;
@@ -267,8 +273,27 @@ public class BattleArena implements Arena {
   /**
    * {@inheritDoc}
    */
+  @Override
   public List<Weapon> getWeaponArmory() {
     List<Weapon> weaponList = new ArrayList<>(this.weaponArmory);
     return weaponList;
+  }
+
+  /**
+   * {@inheritDoc}
+   */
+  @Override
+  public Player getPlayer1() {
+    Player player1 = this.initialPlayer1;
+    return player1;
+  }
+
+  /**
+   * {@inheritDoc}
+   */
+  @Override
+  public Player getPlayer2() {
+    Player player2 = this.initialPlayer2;
+    return player2;
   }
 }
