@@ -49,6 +49,22 @@ public class BattleArenaTest {
     assertTrue(arena.getPlayer2().getCurrentWeapon() instanceof Barehanded);
   }
 
+  @Test
+  public void testForPlayerWithBasicAbilities() {
+    randomGenerator = new FixedRandGenerator(2);
+    arena = new BattleArena("Chick Jr", "Duck Jr", randomGenerator);
+    assertEquals(2, arena.getPlayer1().getStrength());
+    assertEquals(2, arena.getPlayer1().getCharisma());
+    assertEquals(2, arena.getPlayer1().getDexterity());
+    assertEquals(2, arena.getPlayer1().getConstitution());
+    //check for player 2
+    assertEquals(2, arena.getPlayer2().getStrength());
+    assertEquals(2, arena.getPlayer2().getCharisma());
+    assertEquals(2, arena.getPlayer2().getDexterity());
+    assertEquals(2, arena.getPlayer2().getConstitution());
+
+  }
+
   @Test(expected = IllegalArgumentException.class)
   public void InvalidPlayer1Name() {
     new BattleArena("p1", null, randomGenerator);
@@ -118,6 +134,7 @@ public class BattleArenaTest {
             "Defender Avoidance Ability 2\n" +
             "Health of the attacker Jun: 59\n" +
             "Health of the defendant Jin: 18\n" +
+            "Attacker Damage Value: 23\n" +
             "Attack successful, Damage done: 23\n" +
             "-------------------------- Game Over --------------------------\n" +
             "Jin Wins!!";
@@ -141,6 +158,7 @@ public class BattleArenaTest {
             "Defender Avoidance Ability 2\n" +
             "Health of the attacker Jun: 59\n" +
             "Health of the defendant Jin: 18\n" +
+            "Attacker Damage Value: 23\n" +
             "Attack successful, Damage done: 23\n" +
             "-------------------------- Game Over --------------------------\n" +
             "Jin Wins!!";
@@ -158,6 +176,56 @@ public class BattleArenaTest {
     //As striking power of Attacker is lesser than Defender avoidance ability,
     // hence the attack is successful and no damage is incurred
     assertTrue(arena.startBattle().contains("Attack was unsuccessful"));
+  }
+
+  @Test
+  public void testForHealthChangeAfterDamage() {
+    randomGenerator = new FixedRandGenerator(2, 3, 1, 3);
+    arena = new BattleArena("Jin", "Jun", randomGenerator);
+    arena.equipPlayerWithGears();
+    arena.requestWeaponForPlayer();
+    //In move 2 the health of player Jin is changes from 12 to 1 after
+    // successful attack of damage 11
+    assertEquals(true, arena.startBattle().contains("-------------------------- "
+            + "Move No 6 --------------------------\n"
+            + "Jin is attacking Jun\n" + "\n"
+            + "Striking Power of Attacker 5\n"
+            + "Defender Avoidance Ability 2\n"
+            + "Health of the attacker Jin: 20\n"
+            + "Health of the defendant Jun: 33\n"
+            + "Attacker Damage Value: 4\n"
+            + "Attack successful, Damage done: 4\n"
+            + "-------------------------- Move No 7 --------------------------\n"
+            + "Jun is attacking Jin\n" + "\n"
+            + "Striking Power of Attacker 5\n"
+            + "Defender Avoidance Ability 2\n"
+            + "Health of the attacker Jun: 29\n"
+            + "Health of the defendant Jin: 20\n"
+            + "Attacker Damage Value: -2\n" + "Attack successful, but Damage done 0 "));
+  }
+
+  @Test
+  public void testForDamageZeroHealthSame() {
+    randomGenerator = new FixedRandGenerator(2, 1, 1, 3);
+    arena = new BattleArena("Jin", "Jun", randomGenerator);
+    arena.equipPlayerWithGears();
+    arena.requestWeaponForPlayer();
+    //In move 7 the damage value of the attacker Jun is -1, and the damage value of defendant
+    // Jin is not changed as the health of the attacker is not greater than 0
+    assertEquals(true, arena.startBattle().contains("" +
+            "-------------------------- Move No 4 --------------------------\n"
+            + "Jin is attacking Jun\n" + "\n"
+            + "Striking Power of Attacker 3\n"
+            + "Defender Avoidance Ability 3\n"
+            + "Health of the attacker Jin: 18\n"
+            + "Health of the defendant Jun: 27\n"
+            + "Attacker Damage Value: -3\n"
+            + "Attack was unsuccessful\n"
+            + "-------------------------- Move No 5 --------------------------\n"
+            + "Jun is attacking Jin\n" + "\n"
+            + "Striking Power of Attacker 3\n" + "Defender Avoidance Ability 3\n"
+            + "Health of the attacker Jun: 27\n" + "Health of the defendant Jin: 18\n"
+            + "Attacker Damage Value: -1\n" + "Attack was unsuccessful"));
   }
 
   @Test

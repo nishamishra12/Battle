@@ -11,7 +11,7 @@ import equipment.Equipment;
  */
 public class FixedRandGenerator implements RandomGenerator {
 
-  private int[] arr;
+  private final int[] arr;
   private int index;
 
   /**

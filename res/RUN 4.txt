@@ -1,0 +1,135 @@
+"C:\Program Files\Java\jdk-11.0.12\bin\java.exe" "-javaagent:C:\Program Files\JetBrains\IntelliJ IDEA 2021.2.1\lib\idea_rt.jar=62940:C:\Program Files\JetBrains\IntelliJ IDEA 2021.2.1\bin" -Dfile.encoding=UTF-8 -classpath C:\Users\nisha\Desktop\MSCS\PDP\Battle\out\production\Battle driver.Driver
+****** Welcome to Jumptastic Games!!! ******
+Player 1 created
+Player 2 created
+************** Player Description **************
+Player Name: Nick
+Charisma: 18, Constitution: 18, Dexterity: 7, Strength: 5
+Gears - 
+HeadgearE
+PotionB
+PotionC
+PotionD
+PotionH
+PotionI
+PotionL
+PotionM
+BeltA
+BeltC
+BeltH
+BeltK
+FootwearB
+Weapon: TwoHandedSword
+************** Player Description **************
+Player Name: Rick
+Charisma: 23, Constitution: 10, Dexterity: 20, Strength: 20
+Gears - 
+HeadgearB
+PotionA
+PotionE
+PotionF
+PotionG
+PotionJ
+PotionK
+PotionN
+PotionO
+BeltB
+BeltD
+BeltF
+BeltI
+BeltJ
+BeltL
+BeltO
+FootwearD
+Weapon: TwoHandedSword
+Players are ready for Battle
+
+-------------------------- Move No 1 --------------------------
+Rick is attacking Nick
+
+Striking Power of Attacker 24
+Defender Avoidance Ability 12
+Health of the attacker Rick: 73
+Health of the defendant Nick: 48
+Attack successful, Damage done: 12
+-------------------------- Move No 2 --------------------------
+Nick is attacking Rick
+
+Striking Power of Attacker 6
+Defender Avoidance Ability 23
+Health of the attacker Nick: 36
+Health of the defendant Rick: 73
+Attack was unsuccessful
+-------------------------- Move No 3 --------------------------
+Rick is attacking Nick
+
+Striking Power of Attacker 25
+Defender Avoidance Ability 10
+Health of the attacker Rick: 73
+Health of the defendant Nick: 36
+Attack successful, Damage done: 12
+-------------------------- Move No 4 --------------------------
+Nick is attacking Rick
+
+Striking Power of Attacker 12
+Defender Avoidance Ability 25
+Health of the attacker Nick: 24
+Health of the defendant Rick: 73
+Attack was unsuccessful
+-------------------------- Move No 5 --------------------------
+Rick is attacking Nick
+
+Removed gear: POTION for Player: Rick, Effecting Ability: Charisma, Value: 3
+Removed gear: POTION for Player: Rick, Effecting Ability: Charisma, Value: 2
+Removed gear: FOOTWEAR for Player: Rick, Effecting Ability: Dexterity, Value: 2
+Removed gear: POTION for Player: Nick, Effecting Ability: Dexterity, Value: 1
+Removed gear: POTION for Player: Nick, Effecting Ability: Charisma, Value: -3
+Striking Power of Attacker 22
+Defender Avoidance Ability 10
+Health of the attacker Rick: 66
+Health of the defendant Nick: 26
+Attack successful, Damage done: 12
+-------------------------- Move No 6 --------------------------
+Nick is attacking Rick
+
+Removed gear: BELT for Player: Nick, Effecting Ability: Dexterity, Value: -3
+Removed gear: POTION for Player: Nick, Effecting Ability: Constitution, Value: -1
+Removed gear: POTION for Player: Nick, Effecting Ability: Charisma, Value: 1
+Removed gear: BELT for Player: Rick, Effecting Ability: Dexterity, Value: 1
+Removed gear: BELT for Player: Rick, Effecting Ability: Charisma, Value: 3
+Striking Power of Attacker 14
+Defender Avoidance Ability 22
+Health of the attacker Nick: 17
+Health of the defendant Rick: 62
+Attack was unsuccessful
+-------------------------- Move No 7 --------------------------
+Rick is attacking Nick
+
+Removed gear: POTION for Player: Rick, Effecting Ability: Dexterity, Value: 2
+Removed gear: BELT for Player: Rick, Effecting Ability: Strength, Value: 3
+Removed gear: BELT for Player: Nick, Effecting Ability: Charisma, Value: 3
+Removed gear: BELT for Player: Nick, Effecting Ability: Charisma, Value: 3
+Striking Power of Attacker 21
+Defender Avoidance Ability 13
+Health of the attacker Rick: 57
+Health of the defendant Nick: 11
+Attack successful, Damage done: 8
+-------------------------- Move No 8 --------------------------
+Nick is attacking Rick
+
+Removed gear: BELT for Player: Nick, Effecting Ability: Constitution, Value: 2
+Removed gear: POTION for Player: Nick, Effecting Ability: Constitution, Value: 3
+Removed gear: POTION for Player: Nick, Effecting Ability: Dexterity, Value: 2
+Removed gear: HEADGEAR for Player: Nick, Effecting Ability: Constitution, Value: 2
+Removed gear: POTION for Player: Rick, Effecting Ability: Charisma, Value: 2
+Removed gear: BELT for Player: Rick, Effecting Ability: Dexterity, Value: 1
+Removed gear: BELT for Player: Rick, Effecting Ability: Strength, Value: 1
+Removed gear: BELT for Player: Rick, Effecting Ability: Charisma, Value: 3
+Striking Power of Attacker 9
+Defender Avoidance Ability 19
+Health of the attacker Nick: -6
+Health of the defendant Rick: 50
+Attack was unsuccessful
+-------------------------- Game Over --------------------------
+Nick Wins!!
+Do you want to reset game?

@@ -127,6 +127,7 @@ public class BattleArena implements Arena {
               + attacker.getHealth());
       stringBuilder.append('\n' + "Health of the defendant " + defendant.getName() + ": "
               + defendant.getHealth());
+      stringBuilder.append('\n' + "Attacker Damage Value: " + attacker.getActualDamage());
       if (attacker.getStrikingPower() > defendant.getAvoidanceAbility()
               && attacker.getActualDamage() > 0) {
         stringBuilder.append('\n' + "Attack successful,").append(" Damage done: "

@@ -14,7 +14,7 @@ public class Broadsword extends Sword {
    * @param randomGenerator this parameter takes the random generator to calculate the damage value
    */
   public Broadsword(RandomGenerator randomGenerator) {
-    super(randomGenerator.getNextInt(6,10));
+    super(randomGenerator.getNextInt(6, 10));
   }
 
 }

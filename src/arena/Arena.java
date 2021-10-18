@@ -20,7 +20,7 @@ public interface Arena {
   public String startBattle();
 
   /**
-   * This method is to used to get description of the two players who are in the battle.
+   * This method is used to get description of the two players who are in the battle.
    *
    * @return the description of each player with abilities, gears, and weapon used.
    */

@@ -10,5 +10,5 @@ public interface Weapon {
    *
    * @return the damage value of every weapon
    */
-  int getDamage();
+  public int getDamage();
 }

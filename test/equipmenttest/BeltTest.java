@@ -21,15 +21,15 @@ public class BeltTest {
 
   @Before
   public void setUp() throws Exception {
-    this.belt =  new Belt("belt N", new FixedRandGenerator(2));
+    this.belt = new Belt("belt N", new FixedRandGenerator(2));
   }
 
-  @Test (expected = IllegalArgumentException.class)
+  @Test(expected = IllegalArgumentException.class)
   public void testForNullBeltName() {
     new Belt(null, new FixedRandGenerator(2));
   }
 
-  @Test (expected = IllegalArgumentException.class)
+  @Test(expected = IllegalArgumentException.class)
   public void testForNullRandomizer() {
     new Belt("Belt", null);
   }
@@ -37,7 +37,7 @@ public class BeltTest {
 
   @Test
   public void compareTo() {
-    Equipment belt1 = new Belt("belt M",new FixedRandGenerator(1));
+    Equipment belt1 = new Belt("belt M", new FixedRandGenerator(1));
     assertEquals(-1, belt1.compareTo(this.belt));
   }
 
@@ -70,7 +70,7 @@ public class BeltTest {
 
   @Test
   public void getEquipmentType() {
-    Assert.assertEquals(EquipmentType.BELT,this.belt.getEquipmentType());
+    Assert.assertEquals(EquipmentType.BELT, this.belt.getEquipmentType());
   }
 
   @Test
@@ -80,6 +80,6 @@ public class BeltTest {
 
   @Test
   public void getMove() {
-    assertEquals(2,this.belt.getMove());
+    assertEquals(2, this.belt.getMove());
   }
 }

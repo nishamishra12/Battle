@@ -15,8 +15,8 @@ public class Belt extends EquipmentAbstract {
   private final String name;
   private final List<Ability> effectAbility = new ArrayList<>();
   private final BeltSize size;
+  private final int move;
   private int effectValue;
-  private int move;
 
   /**
    * Constructs an object of Belt class with the name of the belt, and the random generator.

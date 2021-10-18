@@ -3,74 +3,264 @@ Player 1 created
 Player 2 created
 ************** Player Description **************
 Player Name: Nick
-Charisma: 20, Constitution: 11, Dexterity: 23, Strength: 16
+Charisma: 18, Constitution: 17, Dexterity: 12, Strength: 11
 Gears - 
-HeadgearC
+HeadgearB
 PotionA
+PotionC
+PotionD
+PotionE
+PotionN
+PotionO
+BeltC
+BeltG
+BeltH
+BeltK
+FootwearE
+Weapon: Broadsword
+************** Player Description **************
+Player Name: Rick
+Charisma: 19, Constitution: 8, Dexterity: 15, Strength: 14
+Gears - 
+HeadgearD
 PotionB
+PotionF
 PotionG
 PotionH
 PotionI
 PotionJ
+PotionK
 PotionL
 PotionM
-PotionO
-BeltG
-BeltH
-BeltO
-FootwearD
-Weapon: Axe
-************** Player Description **************
-Player Name: Rick
-Charisma: 12, Constitution: 8, Dexterity: 10, Strength: 6
-Gears - 
-HeadgearE
-PotionC
-PotionD
-PotionE
-PotionF
-PotionK
-PotionN
+BeltD
 BeltE
-BeltF
-BeltI
 BeltJ
 BeltM
-FootwearA
-Weapon: Flail
+BeltN
+FootwearC
+Weapon: Broadsword
 Players are ready for Battle
 
 -------------------------- Move No 1 --------------------------
-Nick is attacking Rick
-
-Striking Power of Attacker 23
-Defender Avoidance Ability 12
-Attack successful, Damage done: 17
--------------------------- Move No 2 --------------------------
 Rick is attacking Nick
 
-Striking Power of Attacker 13
-Defender Avoidance Ability 24
-Attack was unsuccessful
--------------------------- Move No 3 --------------------------
+Striking Power of Attacker 23
+Defender Avoidance Ability 13
+Health of the attacker Rick: 56
+Health of the defendant Nick: 58
+Attack successful, Damage done: 5
+-------------------------- Move No 2 --------------------------
 Nick is attacking Rick
 
-Striking Power of Attacker 25
-Defender Avoidance Ability 13
-Attack successful, Damage done: 17
+Striking Power of Attacker 12
+Defender Avoidance Ability 18
+Health of the attacker Nick: 53
+Health of the defendant Rick: 56
+Attack was unsuccessful
+-------------------------- Move No 3 --------------------------
+Rick is attacking Nick
+
+Striking Power of Attacker 17
+Defender Avoidance Ability 17
+Health of the attacker Rick: 56
+Health of the defendant Nick: 53
+Attack was unsuccessful
 -------------------------- Move No 4 --------------------------
+Nick is attacking Rick
+
+Striking Power of Attacker 13
+Defender Avoidance Ability 16
+Health of the attacker Nick: 53
+Health of the defendant Rick: 56
+Attack was unsuccessful
+-------------------------- Move No 5 --------------------------
+Rick is attacking Nick
+
+Removed gear: POTION for Player: Rick, Effecting Ability: Dexterity, Value: 1
+Removed gear: HEADGEAR for Player: Rick, Effecting Ability: Constitution, Value: 3
+Striking Power of Attacker 23
+Defender Avoidance Ability 15
+Health of the attacker Rick: 52
+Health of the defendant Nick: 53
+Attack successful, Damage done: 5
+-------------------------- Move No 6 --------------------------
+Nick is attacking Rick
+
+Removed gear: POTION for Player: Nick, Effecting Ability: Constitution, Value: 3
+Removed gear: BELT for Player: Nick, Effecting Ability: Dexterity, Value: -3
+Removed gear: POTION for Player: Rick, Effecting Ability: Dexterity, Value: -1
+Removed gear: POTION for Player: Rick, Effecting Ability: Dexterity, Value: -2
+Removed gear: POTION for Player: Rick, Effecting Ability: Charisma, Value: -3
+Removed gear: BELT for Player: Rick, Effecting Ability: Charisma, Value: 1
+Removed gear: BELT for Player: Rick, Effecting Ability: Dexterity, Value: 1
+Striking Power of Attacker 14
+Defender Avoidance Ability 17
+Health of the attacker Nick: 48
+Health of the defendant Rick: 56
+Attack was unsuccessful
+-------------------------- Move No 7 --------------------------
+Rick is attacking Nick
+
+Removed gear: BELT for Player: Rick, Effecting Ability: Constitution, Value: 1
+Removed gear: BELT for Player: Rick, Effecting Ability: Dexterity, Value: 1
+Removed gear: POTION for Player: Nick, Effecting Ability: Charisma, Value: 3
+Removed gear: POTION for Player: Nick, Effecting Ability: Dexterity, Value: -1
+Striking Power of Attacker 17
+Defender Avoidance Ability 17
+Health of the attacker Rick: 54
+Health of the defendant Nick: 46
+Attack was unsuccessful
+-------------------------- Move No 8 --------------------------
+Nick is attacking Rick
+
+Removed gear: POTION for Player: Nick, Effecting Ability: Charisma, Value: 2
+Removed gear: FOOTWEAR for Player: Nick, Effecting Ability: Dexterity, Value: 1
+Removed gear: POTION for Player: Rick, Effecting Ability: Charisma, Value: -1
+Removed gear: BELT for Player: Rick, Effecting Ability: Constitution, Value: -2
+Removed gear: BELT for Player: Rick, Effecting Ability: Constitution, Value: -2
+Removed gear: FOOTWEAR for Player: Rick, Effecting Ability: Dexterity, Value: 1
+Striking Power of Attacker 18
+Defender Avoidance Ability 18
+Health of the attacker Nick: 43
+Health of the defendant Rick: 58
+Attack was unsuccessful
+-------------------------- Move No 9 --------------------------
+Rick is attacking Nick
+
+Removed gear: POTION for Player: Rick, Effecting Ability: Charisma, Value: 3
+Removed gear: POTION for Player: Rick, Effecting Ability: Constitution, Value: 1
+Removed gear: BELT for Player: Rick, Effecting Ability: Constitution, Value: 1
+Removed gear: BELT for Player: Rick, Effecting Ability: Strength, Value: 1
+Removed gear: HEADGEAR for Player: Nick, Effecting Ability: Constitution, Value: 3
+Removed gear: POTION for Player: Nick, Effecting Ability: Constitution, Value: -2
+Removed gear: BELT for Player: Nick, Effecting Ability: Constitution, Value: -3
+Removed gear: BELT for Player: Nick, Effecting Ability: Strength, Value: -3
+Removed gear: BELT for Player: Nick, Effecting Ability: Charisma, Value: 1
+Removed gear: BELT for Player: Nick, Effecting Ability: Charisma, Value: 1
+Striking Power of Attacker 17
+Defender Avoidance Ability 18
+Health of the attacker Rick: 52
+Health of the defendant Nick: 46
+Attack was unsuccessful
+-------------------------- Move No 10 --------------------------
+Nick is attacking Rick
+
+Striking Power of Attacker 21
+Defender Avoidance Ability 17
+Health of the attacker Nick: 46
+Health of the defendant Rick: 52
+Attack successful, Damage done: 17
+-------------------------- Move No 11 --------------------------
+Rick is attacking Nick
+
+Striking Power of Attacker 21
+Defender Avoidance Ability 20
+Health of the attacker Rick: 35
+Health of the defendant Nick: 46
+Attack successful, Damage done: 5
+-------------------------- Move No 12 --------------------------
+Nick is attacking Rick
+
+Striking Power of Attacker 15
+Defender Avoidance Ability 19
+Health of the attacker Nick: 41
+Health of the defendant Rick: 35
+Attack was unsuccessful
+-------------------------- Move No 13 --------------------------
+Rick is attacking Nick
+
+Striking Power of Attacker 16
+Defender Avoidance Ability 18
+Health of the attacker Rick: 35
+Health of the defendant Nick: 41
+Attack was unsuccessful
+-------------------------- Move No 14 --------------------------
+Nick is attacking Rick
+
+Striking Power of Attacker 20
+Defender Avoidance Ability 18
+Health of the attacker Nick: 41
+Health of the defendant Rick: 35
+Attack successful, Damage done: 17
+-------------------------- Move No 15 --------------------------
+Rick is attacking Nick
+
+Striking Power of Attacker 22
+Defender Avoidance Ability 19
+Health of the attacker Rick: 18
+Health of the defendant Nick: 41
+Attack successful, Damage done: 5
+-------------------------- Move No 16 --------------------------
+Nick is attacking Rick
+
+Striking Power of Attacker 17
+Defender Avoidance Ability 17
+Health of the attacker Nick: 36
+Health of the defendant Rick: 18
+Attack was unsuccessful
+-------------------------- Move No 17 --------------------------
+Rick is attacking Nick
+
+Striking Power of Attacker 15
+Defender Avoidance Ability 17
+Health of the attacker Rick: 18
+Health of the defendant Nick: 36
+Attack was unsuccessful
+-------------------------- Move No 18 --------------------------
+Nick is attacking Rick
+
+Striking Power of Attacker 19
+Defender Avoidance Ability 19
+Health of the attacker Nick: 36
+Health of the defendant Rick: 18
+Attack was unsuccessful
+-------------------------- Move No 19 --------------------------
+Rick is attacking Nick
+
+Striking Power of Attacker 19
+Defender Avoidance Ability 18
+Health of the attacker Rick: 18
+Health of the defendant Nick: 36
+Attack successful, Damage done: 5
+-------------------------- Move No 20 --------------------------
+Nick is attacking Rick
+
+Striking Power of Attacker 21
+Defender Avoidance Ability 19
+Health of the attacker Nick: 31
+Health of the defendant Rick: 18
+Attack successful, Damage done: 17
+-------------------------- Move No 21 --------------------------
+Rick is attacking Nick
+
+Striking Power of Attacker 19
+Defender Avoidance Ability 16
+Health of the attacker Rick: 1
+Health of the defendant Nick: 31
+Attack successful, Damage done: 5
+-------------------------- Move No 22 --------------------------
+Nick is attacking Rick
+
+Striking Power of Attacker 17
+Defender Avoidance Ability 19
+Health of the attacker Nick: 26
+Health of the defendant Rick: 1
+Attack was unsuccessful
+-------------------------- Move No 23 --------------------------
 Rick is attacking Nick
 
 Striking Power of Attacker 14
-Defender Avoidance Ability 24
+Defender Avoidance Ability 19
+Health of the attacker Rick: 1
+Health of the defendant Nick: 26
 Attack was unsuccessful
--------------------------- Move No 5 --------------------------
+-------------------------- Move No 24 --------------------------
 Nick is attacking Rick
 
-Removed gear: POTION for Player: Nick, Effecting Ability: Constitution, Value: 2
-Removed gear: POTION for Player: Nick, Effecting Ability: Charisma, Value: 2
-Striking Power of Attacker 18
-Defender Avoidance Ability 14
+Striking Power of Attacker 19
+Defender Avoidance Ability 18
+Health of the attacker Nick: 26
+Health of the defendant Rick: 1
 Attack successful, Damage done: 17
 -------------------------- Game Over --------------------------
 Rick Wins!!

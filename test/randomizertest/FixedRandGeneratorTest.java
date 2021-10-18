@@ -24,12 +24,12 @@ public class FixedRandGeneratorTest {
 
   @Before
   public void setUp() throws Exception {
-    fixedRandGenerator =  new FixedRandGenerator(2);
+    fixedRandGenerator = new FixedRandGenerator(2);
   }
 
   @Test
   public void getNextInt() {
-    assertEquals(2, fixedRandGenerator.getNextInt(2,4));
+    assertEquals(2, fixedRandGenerator.getNextInt(2, 4));
   }
 
   @Test
@@ -43,6 +43,6 @@ public class FixedRandGeneratorTest {
     equipmentList.add(new Footwear("FootwearB", fixedRandGenerator));
     equipmentList.add(new Belt("BeltB", fixedRandGenerator));
     equipmentList.add(new HeadGear("PotionB", fixedRandGenerator));
-    assertEquals(equipmentList,fixedRandGenerator.shuffleList(equipmentList));
+    assertEquals(equipmentList, fixedRandGenerator.shuffleList(equipmentList));
   }
 }

@@ -13,13 +13,13 @@ public class Footwear extends EquipmentAbstract {
 
   private final String name;
   private final List<Ability> effectAbility = new ArrayList<>();
+  private final int move;
   private int effectValue;
-  private int move;
 
   /**
    * Constructs an object of Footwear class with the name of the footwear, and the random generator.
    *
-   * @param name this parameter takes the name of the equipment footwear
+   * @param name            this parameter takes the name of the equipment footwear
    * @param randomGenerator this parameter takes the random generator
    * @throws IllegalArgumentException when name or random generator passed is null
    */
@@ -32,9 +32,9 @@ public class Footwear extends EquipmentAbstract {
       throw new IllegalArgumentException("Randomizer cannot be null");
     }
     this.name = name;
-    this.effectValue = randomGenerator.getNextInt(1,4);
+    this.effectValue = randomGenerator.getNextInt(1, 4);
     this.effectAbility.add(Ability.DEXTERITY);
-    this.move = randomGenerator.getNextInt(5,10);
+    this.move = randomGenerator.getNextInt(5, 10);
   }
 
   /**

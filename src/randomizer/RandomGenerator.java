@@ -16,7 +16,7 @@ public interface RandomGenerator {
    * @param max this parameter takes the maximum value
    * @return an integer between minimum and maximum value
    */
-  int getNextInt(int min, int max);
+  public int getNextInt(int min, int max);
 
   /**
    * This method provides a shuffled list of equipment based on whether the random or fixed
@@ -25,5 +25,5 @@ public interface RandomGenerator {
    * @param arraylist this parameter takes the not shuffled array list
    * @return the shuffled list of equipments
    */
-  List<Equipment> shuffleList(List<Equipment> arraylist);
+  public List<Equipment> shuffleList(List<Equipment> arraylist);
 }

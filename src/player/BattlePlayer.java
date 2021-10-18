@@ -12,7 +12,7 @@ import weapon.Barehanded;
 import weapon.Weapon;
 
 /**
- * This class represents the Player present in the arena with their basic abilities,
+ * The interface represents the Player present in the arena with their basic abilities,
  * battle powers, weapon, and the list of gears.
  */
 public class BattlePlayer implements Player {
@@ -111,6 +111,7 @@ public class BattlePlayer implements Player {
   /**
    * {@inheritDoc}
    */
+  @Override
   public void calculateInitialHealth() {
     calculateHealthWithGears();
     this.health = this.charisma + this.strength + this.constitution + this.dexterity;
@@ -301,7 +302,8 @@ public class BattlePlayer implements Player {
    */
   @Override
   public Weapon getCurrentWeapon() {
-    return currentWeapon;
+    Weapon weapon = currentWeapon;
+    return weapon;
   }
 
   /**

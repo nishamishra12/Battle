@@ -15,7 +15,7 @@ public class Flail implements Weapon {
    * @param randomGenerator this parameter takes the random generator to calculate the damage value
    */
   public Flail(RandomGenerator randomGenerator) {
-    this.damage = randomGenerator.getNextInt(8,12);
+    this.damage = randomGenerator.getNextInt(8, 12);
   }
 
   /**

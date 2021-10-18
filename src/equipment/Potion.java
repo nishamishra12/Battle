@@ -14,8 +14,8 @@ public class Potion extends EquipmentAbstract {
 
   private final String name;
   private final List<Ability> effectAbility = new ArrayList<>();
+  private final int move;
   private int effectValue;
-  private int move;
 
   /**
    * Constructs an object of Footwear class with the name of the footwear, and the random generator.
